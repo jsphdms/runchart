@@ -18,9 +18,36 @@ base_gaps <- function(base) {
     length(base) > 0
   )
 
-  if (all(is.na(base)))
-    1:length(base)
+  # if (all(is.na(base)))
+  #   return(1:length(base))
 
-  if (!any(is.na(base)))
-    NULL
+  if (!any(is.na(base)) | all(is.na(base)))
+    return(NULL)
+
+  # wbase - working base
+  index <- min(which(!is.na(base)))
+  # wbase <- base[index:length(base)]
+  shift <- NULL
+
+  while(TRUE) {
+
+    wbase <- base[index:length(base)]
+
+    if(all(!is.na(wbase)))
+      return(shift)
+
+    start <- min(which(is.na(wbase))) + index - 1
+    wbase <- base[start:length(base)]
+
+    if (all(is.na(wbase)))
+      return(c(shift, list(start:length(base))))
+
+    end <- min(which(!is.na(wbase))) + start - 2
+    shift <- append(shift, list(start:end))
+
+    index <- end + 1
+
+  }
+
+
 }
