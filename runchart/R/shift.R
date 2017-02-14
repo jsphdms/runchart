@@ -17,9 +17,6 @@
 
 shift <- function(val, base, base_ext, trigger = 6) {
   stopifnot(
-    is.numeric(val),
-    is.numeric(base),
-    is.numeric(base_ext),
     is.numeric(trigger),
     length(val) > 0,
     length(base) > 0,
@@ -28,6 +25,10 @@ shift <- function(val, base, base_ext, trigger = 6) {
   )
 
   shift <- base*NA
+
+  if (all(is.na(base)))
+    return(shift)
+
   gaps  <- base_gaps(base)
 
   if (length(gaps) == 0)
