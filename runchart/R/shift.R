@@ -24,7 +24,7 @@ shift <- function(val, base, base_ext, trigger = 6) {
     length(trigger) == 1
   )
 
-  shift <- base*NA
+  shift <- base*NA_real_
 
   if (all(is.na(base)))
     return(shift)

@@ -1,0 +1,11 @@
+Adjust first_index to handle all-NA vectors better (i.e. without producing a warning)
+test_sus - add more tests for non-useful observations
+rebase() - add more tests for new variable "end"
+tweak tickers so they know where to start themselves
+tidy up code - lots of commented code
+use this in other functions: if (sum(val %notin% c(NA, base)) < trigger)
+tidy up function/variable names
+
+
+#Adjust first_chunk to act more common-sense with vectors smaller than 8
+#Rename utility functions to something more meaningful
