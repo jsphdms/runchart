@@ -1,4 +1,3 @@
-Write tests for runchart()
 remove reliance on tidyverse (not enough benefit to justify)
 Adjust first_index to handle all-NA vectors better (i.e. without producing a warning)
 test_sus - add more tests for non-useful observations
@@ -16,3 +15,4 @@ write package vignette
 
 #Adjust first_chunk to act more common-sense with vectors smaller than 8
 #Rename utility functions to something more meaningful
+#Write tests for runchart()

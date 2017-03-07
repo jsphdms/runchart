@@ -20,7 +20,8 @@ elems8 <- function(x, n = 8L) {
     stop(paste("Input vector x needs at least", n, "elements."))
   }
 
-  non_NA_count <- x %>% is.na() %>% `!`() %>% which() %>% length()
+  non_NA_count <- length(which(!is.na(x)))
+
   if (non_NA_count < n) {
     stop(
       paste("Input vector x only has", non_NA_count, "non-NA elements. It needs at least", n))
