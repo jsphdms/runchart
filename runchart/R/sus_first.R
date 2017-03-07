@@ -13,13 +13,16 @@
 #'@seealso \code{\link{ticker}} \code{\link{sus()}}
 
 sus_first <- function(base, val, trigger = 9) {
+
+  if (length(val) < trigger)
+    return(NULL)
+
   stopifnot(
     is.numeric(base),
     is.numeric(val),
     is.numeric(trigger),
     length(base) == 1,
-    length(trigger) == 1,
-    length(val) > 1
+    length(trigger) == 1
   )
 
   if (sum(val %notin% c(NA, base)) < trigger)

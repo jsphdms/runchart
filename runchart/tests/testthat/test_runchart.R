@@ -12,6 +12,13 @@ test_that("shift() handles basic cases", {
                val = c(rep(0,8), rep(1,8)))
     )
 
+  expect_equal(
+    runchart(c(rep(0,8), rep(1,9))),
+    data.frame(base = c(rep(0,8), rep(1,8), NA),
+               base_ext = c(rep(0,8), rep(1,9)),
+               shift = rep(NA_real_,17),
+               val = c(rep(0,8), rep(1,9)))
+    )
 })
 
 # Corner cases ----------------------------------------------------------------
