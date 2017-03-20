@@ -10,6 +10,7 @@
 #'runchart(rep(1:20))
 #'@seealso \code{\link{sus}} \code{\link{shift}}
 
+#'@export
 runchart <- function(val, sus_trigger = 9, shift_trigger = 6) {
   stopifnot(
     is.numeric(val),
