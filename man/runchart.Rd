@@ -4,14 +4,10 @@
 \alias{runchart}
 \title{Create run chart fields for vector \code{val}.}
 \usage{
-runchart(val, sus_trigger = 9, shift_trigger = 6)
+runchart(val)
 }
 \arguments{
 \item{val}{create run chart fields for \code{val}.}
-
-\item{sus_trigger}{Number of data points required to create a sustained shift.}
-
-\item{shift_trigger}{Number of data points required to create a shift.}
 }
 \value{
 A data.frame with four columns: 1. The original data. 2. A base line.
