@@ -1,10 +1,10 @@
 ---
-title: "runchart quickstart guide"
+title: "runchart Quickstart Guide"
 author: "Joseph Adams"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{runchart Quickstart Guide}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
