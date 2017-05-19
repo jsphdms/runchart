@@ -2,4 +2,5 @@
 
 export(rc_fields)
 export(rc_plot)
-export(rc_shift)
+export(multi_shift)
+export(basic_shift)
