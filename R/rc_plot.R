@@ -10,7 +10,7 @@
 #'  date = seq.Date(Sys.Date(), by = "week", length.out = n),
 #'  value = cumsum(rnorm(n))),
 #'"Here is a run chart")
-#'@seealso \code{\link{runchart}} \code{\link{split}}
+#'@seealso \code{\link{rc_fields}} \code{\link{split}}
 #'
 #'@export
 rc_plot <- function(df, title = "What a great run chart!") {
@@ -20,7 +20,7 @@ rc_plot <- function(df, title = "What a great run chart!") {
     nrow(df) > 0
   )
 
-  rc <- cbind(df[, names(df) != "value", drop = F], runchart(df[["value"]]))
+  rc <- cbind(df[, names(df) != "value", drop = F], rc_fields(df[["value"]]))
 
   base <- split(rc[['base']], 'base')
   base_ext <- split(rc[['base_ext']], 'base_ext')
