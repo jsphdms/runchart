@@ -5,7 +5,7 @@
 #'  3. An extended base line. 4: Shifts.
 #'@examples
 #'rc_fields(rep(1:20))
-#'@seealso \code{\link{sus}} \code{\link{shift}}
+#'@seealso \code{\link{sus}} \code{\link{rc_shift}}
 
 #'@export
 rc_fields <- function(val) {
@@ -15,7 +15,7 @@ rc_fields <- function(val) {
   )
 
   rc <- sus(val)
-  shift <- shift(val, rc[['base']], rc[['base_ext']])
+  shift <- rc_shift(val, rc[['base']], rc[['base_ext']])
 
   rc[['shift']] <- shift
   rc[['val']] <- val

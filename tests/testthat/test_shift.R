@@ -1,11 +1,11 @@
 library(firstpackage)
-context("shift()")
+context("rc_shift()")
 
 # Basic functionality ---------------------------------------------------------
 
-test_that("shift() handles basic cases", {
+test_that("rc_shift() handles basic cases", {
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,8)),
       base = c(rep(0,8), rep(NA,8)),
       base_ext = rep(0, 16)
@@ -14,7 +14,7 @@ test_that("shift() handles basic cases", {
     )
 
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(-1,8)),
       base = c(rep(0,8), rep(NA,8)),
       base_ext = rep(0, 16)
@@ -24,7 +24,7 @@ test_that("shift() handles basic cases", {
 
   # constant
   expect_equal(
-    shift(
+    rc_shift(
       val = rep(0,16),
       base = c(rep(0,8), rep(NA,8)),
       base_ext = rep(0, 16)
@@ -34,11 +34,11 @@ test_that("shift() handles basic cases", {
 
 # Corner cases ----------------------------------------------------------------
 
-test_that("shift() handles corner cases", {
+test_that("rc_shift() handles corner cases", {
 
   # 2 consecutive shifts same side
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,6), -1, rep(1,6)),
       base = c(rep(0,8), rep(NA,13)),
       base_ext = rep(0, 21)
@@ -47,7 +47,7 @@ test_that("shift() handles corner cases", {
 
   # 2 consecutive shifts different side
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,6), rep(-1,6)),
       base = c(rep(0,8), rep(NA,12)),
       base_ext = rep(0, 20)
@@ -56,7 +56,7 @@ test_that("shift() handles corner cases", {
 
   # 2 shifts either side of sustained shift same side
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,6), rep(2,8), rep(3,6)),
       base = c(rep(0,8), rep(NA,6), rep(2,8), rep(NA,6)),
       base_ext = c(rep(0, 14), rep(2, 14))
@@ -65,7 +65,7 @@ test_that("shift() handles corner cases", {
 
   # 2 shifts either side of sustained shift different side
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,6), rep(2,8), rep(1,6)),
       base = c(rep(0,8), rep(NA,6), rep(2,8), rep(NA,6)),
       base_ext = c(rep(0, 14), rep(2, 14))
@@ -74,7 +74,7 @@ test_that("shift() handles corner cases", {
 
   # no shift
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,5)),
       base = c(rep(0,8), rep(NA,5)),
       base_ext = rep(0, 13)
@@ -84,7 +84,7 @@ test_that("shift() handles corner cases", {
 
   # almost shift
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,5), NA),
       base = c(rep(0,8), rep(NA,6)),
       base_ext = rep(0, 14)
@@ -94,7 +94,7 @@ test_that("shift() handles corner cases", {
 
   # almost shift
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,5), 0),
       base = c(rep(0,8), rep(NA,6)),
       base_ext = rep(0, 14)
@@ -104,7 +104,7 @@ test_that("shift() handles corner cases", {
 
   # delayed shift
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,5), 0, 1),
       base = c(rep(0,8), rep(NA,7)),
       base_ext = rep(0, 15)
@@ -114,7 +114,7 @@ test_that("shift() handles corner cases", {
 
   # almost shift followed by shift different side
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,5), rep(-1,6)),
       base = c(rep(0,8), rep(NA,11)),
       base_ext = rep(0, 14)
@@ -124,7 +124,7 @@ test_that("shift() handles corner cases", {
 
   # shift at end
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,6)),
       base = c(rep(0,8), rep(NA,6)),
       base_ext = rep(0, 14)
@@ -136,11 +136,11 @@ test_that("shift() handles corner cases", {
 
 # NAs -------------------------------------------------------------------------
 
-test_that("shift() handles NAs", {
+test_that("rc_shift() handles NAs", {
 
   # all NA
   expect_equal(
-    shift(
+    rc_shift(
       val = rep(NA,16),
       base = rep(NA,16),
       base_ext = rep(NA, 16)
@@ -149,7 +149,7 @@ test_that("shift() handles NAs", {
 
   # NAs at beginning
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(NA, 2), rep(0,8), rep(1,8)),
       base = c(rep(NA, 2), rep(0,8), rep(NA,8)),
       base_ext = c(rep(NA, 2), rep(0, 16))
@@ -158,7 +158,7 @@ test_that("shift() handles NAs", {
 
   # constant
   expect_equal(
-    shift(
+    rc_shift(
       val = rep(0,16),
       base = c(rep(0,8), rep(NA,8)),
       base_ext = rep(0, 16)
@@ -167,7 +167,7 @@ test_that("shift() handles NAs", {
 
   # shift followed by NAs
   expect_equal(
-    shift(
+    rc_shift(
       val = c(rep(0,8), rep(1,6), NA),
       base = c(rep(0,8), rep(NA,7)),
       base_ext = rep(0, 15)
