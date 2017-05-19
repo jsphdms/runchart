@@ -36,8 +36,11 @@ basic_trend <- function(val, trigger = 5) {
 
   for (index in (trend[2] + 1):length(val)) {
 
-    if (val[index] %in% c(NA, val[trend[length(trend)]])) {
+    if (is.na(val[index])) {
       NULL
+    }
+    else if (val[index] == val[trend[length(trend)]]) {
+      trends <- append(trends, index)
     }
     else if (sign(val[index] - val[trend[length(trend)]]) == updown) {
       trend <- append(trend, index)
@@ -45,7 +48,7 @@ basic_trend <- function(val, trigger = 5) {
     else {
       if (length(trend) >= trigger)
         trends <- append(trends, trend)
-      trend <- index
+      trend <- append(trend[length(trend)], index)
       updown <- -updown
     }
   }
@@ -53,5 +56,5 @@ basic_trend <- function(val, trigger = 5) {
   if (length(trend) >= trigger)
     trends <- append(trends, trend)
 
-  return(trends)
+  return(sort(unique(trends)))
 }
