@@ -20,13 +20,15 @@ rc_plot <- function(df, title = "What a great run chart!") {
     nrow(df) > 0
   )
 
-  rc <- cbind(df["date"], runchart(df[["value"]]))
+  rc <- cbind(df[, names(df) != "value", drop = F], runchart(df[["value"]]))
 
   base <- split(rc[['base']], 'base')
   base_ext <- split(rc[['base_ext']], 'base_ext')
 
   rc <- cbind(rc, base)
   rc <- cbind(rc, base_ext)
+
+
 
   p <- ggplot(rc, aes(label = signif(base_label, digits = 2))) +
     geom_line(aes(date, val), colour = 'skyblue', size = 1.1) +
@@ -47,8 +49,5 @@ rc_plot <- function(df, title = "What a great run chart!") {
                               axis.ticks.x=element_blank(),
                               axis.ticks.y=element_blank(),
                               plot.title = element_text(hjust = 0.5)) +
-    geom_text(aes(date, base_label), vjust = 1, hjust = 0, nudge_y = -.15) +
-    geom_label(aes(x = Sys.Date(), y = rc[["val"]][1], label = "Interesting!", vjust = "inward", hjust = "inward")) +
-    geom_label(aes(x = Sys.Date() + 40, y = rc[["val"]][41], label = "Wow!", vjust = "inward", hjust = "inward"))
-
+    geom_text(aes(date, base_label), vjust = 1, hjust = 0, nudge_y = -.15)
 }
