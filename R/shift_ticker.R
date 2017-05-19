@@ -6,17 +6,18 @@
 #'changing baseline this function is used multiple times.
 #'
 #'@param base A numeric vector of length one. The current baseline value.
-#'@param val A numeric vector. The vector \code{shift_ticker} iterates over.
+#'@param val A numeric vector. The vector \code{basic_shift} iterates over.
 #'@param trigger The default number of observations for a shift is 6.
 #'@param updown Takes value \code{1} or \code{-1}. Is the first useful element
 #'  of \code{val} above (\code{1}) or below (\code{-1}) \code{base}?
 #'@return If shifts are found, the indices of these shifts. If not, \code{NULL}.
 #'@examples
-#'shift_ticker(base = 2, val = 1:8)
-#'shift_ticker(base = 2, val = 1:7)
+#'basic_shift(base = 2, val = 1:8)
+#'basic_shift(base = 2, val = 1:7)
 #'@seealso \code{\link{shift}}
 
-shift_ticker <- function(base, val, trigger = 6) {
+#'@export
+basic_shift <- function(base, val, trigger = 6) {
   stopifnot(
     is.numeric(base),
     is.numeric(trigger),
