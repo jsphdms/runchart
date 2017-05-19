@@ -15,6 +15,7 @@
 #'rc_shift(rep(1:20), bases = c(rep(4.5,8), rep(NA,12)), trigger = 9)
 #'@seealso \code{\link{shift_ticker}}
 
+#'@export
 rc_shift <- function(val, base, base_ext, trigger = 6) {
   stopifnot(
     is.numeric(trigger),
