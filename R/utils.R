@@ -83,8 +83,10 @@ rebase <- function(base, start = 1, end = length(base), new_vals) {
 #'@return A \code{data.frame} with 2 columns: \code{base} and \code{base_ext}.
 #'@examples
 #'df(c(rep(4.5, 8), NA), rep(4.5, 9))
-df <- function(base, base_ext) {
-  data.frame(base = base, base_ext = base_ext)
+df <- function(base, base_ext, base_label) {
+  data.frame(base = base,
+             base_ext = base_ext,
+             base_label = base_label)
 }
 
 #'Convenience infix function.

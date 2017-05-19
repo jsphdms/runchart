@@ -31,17 +31,18 @@ sus <- function(val, trigger = 9) {
     length(val) > 0
   )
 
-  base <- val*NA
+  base <- base_label <- val*NA
 
   if (length(which(!is.na(val))) < trigger - 1)
-    return(df(base, base))
+    return(df(base, base, base_label))
 
   base      <- rebase(base, start = index1(val), end = index8(val), new_vals = elems8(val))
   base_ext  <- rebase(base, start = index1(val), new_vals = base[index1(base)])
   start     <- index8(val)
+  base_label[index1(val)] <- base[index1(val)]
 
   if (length(which(!is.na(val))) < 2*trigger - 1)
-    return(df(base, base_ext))
+    return(df(base, base_ext, base_label))
 
   sus_first <- sus_first(base = base[index1(base)],
                          val = tail(val, -start),
@@ -49,22 +50,23 @@ sus <- function(val, trigger = 9) {
 
   while(!is.null(sus_first)) {
 
-    sus_first <- sus_first + start
-    sus_first <- head(sus_first, -1)
+    sus_first   <- sus_first + start
+    sus_first   <- head(sus_first, -1)
 
-    base      <- rebase(base, start = sus_first[1],
+    base        <- rebase(base, start = sus_first[1],
                         end = sus_first[length(sus_first)],
                         new_vals = val[sus_first])
-    base_ext  <- rebase(base_ext, start = sus_first[1],
+    base_ext    <- rebase(base_ext, start = sus_first[1],
                         new_vals = val[sus_first])
-    start     <- sus_first[length(sus_first)]
+    base_label[sus_first[1]] <- base[sus_first[1]]
+    start       <- sus_first[length(sus_first)]
 
-    sus_first <- sus_first(base = base_ext[length(base_ext)],
+    sus_first   <- sus_first(base = base_ext[length(base_ext)],
                            val = tail(val,-start),
                            trigger = trigger)
 
   }
 
-  return(df(base, base_ext))
+  return(df(base, base_ext, base_label))
 
 }
