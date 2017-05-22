@@ -11,6 +11,9 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
+## Please note
+This package is under construction; functionality may change. If this project is of interest to you please get in touch; I'm keen to hear feedback and may be able to incorporate your specific needs into the package.
+
 ## Introduction
 
 >Because they are simple to make and relatively straightforward to interpret, run charts are one of the most useful tools in quality improvement. - [NHS Scotland Quality Improvement Hub](http://www.qihub.scot.nhs.uk/knowledge-centre/quality-improvement-tools/run-chart.aspx).
@@ -24,7 +27,7 @@ These kinds of approaches have the following limitations:
 * Scripts are often written to operate under specific conditions; making wider adoption unlikely.
 * Testing edge cases is a time consuming task which is replicated with each new script or macro.
 
-The `runchart` package aims to overcome these limitations by exporting a single, well tested, function of the same name: `runchart()`.
+The `runchart` package aims to overcome these limitations by exporting a small number of easy to use and well tested functions.
 
 ## Getting Started
 To download the package first ensure you are not behind a firewall or using a VPN^[These can block installation from GitHub]. Install the package using `install_github()`^[You may need to install the `devtools` package first.]:
@@ -33,28 +36,22 @@ To download the package first ensure you are not behind a firewall or using a VP
 devtools::install_github('josephjosephadams/runchart')
 ```
 
-The `runchart` package exports one simple function: `runchart()`. The only parameter is a numeric vector of non-zero length. It returns a data frame with 4 columns: `base`, `base_ext`, `shift`, and `val`.
-
-For example:
-
-```{r}
-library(runchart)
-rc <- runchart(c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,1,2,3,2,8,9,7,8,7,9,NA,7,7,8,6,5))
-rc
-```
-
-Code for plotting the result might look like this:
+The easiest place to start is with `rc_plot()`. This function takes a data frame with two columns: date and value:
 
 ```{r, warning = FALSE, fig.width = 7, fig.align = 'center'}
+library(runchart)
 library(ggplot2)
-ggplot(rc, aes(1:nrow(rc), val)) +
-  geom_line() +
-  geom_line(aes(y = base), size = 1.3) +
-  geom_line(aes(y = base_ext)) +
-  geom_point(aes(y = shift), shape = 21, size = 3, colour = 'red',
-             stroke = 2) +
-  theme(axis.title.x=element_blank()) +
-  theme(axis.title.y=element_blank())
+
+set.seed(0)
+
+n     <- 30
+date  <- seq.Date(Sys.Date(), by = "day", length.out = n)
+value <- c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,1,2,3,2,8,9,7,8,7,9,NA,7,7,8)
+
+df    <- data.frame(date  = date,
+                    value = value)
+
+rc_plot(df)
 ```
 
 ## Things to Notice
@@ -68,4 +65,26 @@ There are several behaviours to notice in the plot above:
 
 * **Non-useful observations** are ignored. For example the 15th data point above lands exactly on the first baseline. Therefore it neither breaks nor contributes to the observed shift.
 
-The `runchart()` function has been well tested using the `testthat` package to correctly handle such different scenarios and edge cases.
+The functions exported by the `runchart` package have been well tested using the `testthat` package to correctly handle such different scenarios and edge cases.
+
+## Going Further
+If you need the fields that sit behind the run chart plot: use `rc_fields()`:
+
+```{r, warning = FALSE}
+head(rc_fields(value))
+```
+
+The columns `base` and `base_ext` are used for the thick and thin black lines in the plot above. The `base_label` column is used for labelling new baselines. The `shift` and `val` columns are used to plot shifts and the original data.
+
+## Different Methodologies
+There is no fixed methodology for creating run charts. Here are some functions which should help you apply a range of methodologies.
+
+### Single Baseline
+If you require a single baseline with shifts and trends, you can use the `basic_shift()` and `basic_trend()` functions:
+
+```{r, warning = FALSE}
+base = median(value, na.rm = T)
+
+basic_shift(base = base, val = value)
+basic_trend(val = value, this is incorrect)
+```

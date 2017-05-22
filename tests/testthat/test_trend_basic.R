@@ -66,3 +66,13 @@ test_that("basic_trend() handles multiple shifts", {
   expect_equal(basic_trend(c(1:5, NA, 1:5)), c(1:5, 7:11))
 
 })
+
+# Bugs -------------------------------------------------------------
+
+test_that("basic_trend() handles realistic data", {
+
+  # multiple shifts
+  expect_equal(basic_trend(c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,1,2,3,2,8,9,7,8,7,9,NA,7,7,8)),
+               NULL)
+  expect_equal(basic_trend(c(5,6,6,5,5,6,7,8,9)), 4:9)
+})

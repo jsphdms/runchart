@@ -26,35 +26,40 @@ basic_trend <- function(val, trigger = 5) {
   if (length(unique(val[!is.na(val)])) < trigger)
     return(NULL)
 
-  start <- min(which(!is.na(val)))
+  start  <- min(which(!is.na(val)))
   trend2 <- min(which(val != val[start]))
   trend1 <- max(which(val[1:trend2] != val[trend2]))
 
   trend  <- c(trend1, trend2)
   updown <- sign(val[trend[2]] - val[trend[1]])
-  trends <- NULL
+  trends <- non_useful_obs <- NULL
 
   for (index in (trend[2] + 1):length(val)) {
 
     if (is.na(val[index])) {
       NULL
     }
-    else if (val[index] == val[trend[length(trend)]]) {
-      trends <- append(trends, index)
+    else if (val[index] == val[max(trend)]) {
+      non_useful_obs <- append(non_useful_obs, index)
     }
-    else if (sign(val[index] - val[trend[length(trend)]]) == updown) {
+    else if (sign(val[index] - val[max(trend)]) == updown) {
       trend <- append(trend, index)
     }
     else {
-      if (length(trend) >= trigger)
+      if (length(trend) >= trigger) {
         trends <- append(trends, trend)
-      trend <- append(trend[length(trend)], index)
+        trends <- append(trends, non_useful_obs)
+      }
+      trend <- append(max(trend), index)
+      non_useful_obs <- intersect(non_useful_obs, min(trend):max(trend))
       updown <- -updown
     }
   }
 
-  if (length(trend) >= trigger)
+  if (length(trend) >= trigger) {
     trends <- append(trends, trend)
+    trends <- append(trends, non_useful_obs)
+  }
 
-  return(sort(unique(trends)))
+  if (is.null(trends)) return(NULL) else return(sort(unique(trends)))
 }
