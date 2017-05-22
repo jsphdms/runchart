@@ -13,7 +13,7 @@
 #'@seealso \code{\link{rc_fields}} \code{\link{split}}
 #'
 #'@export
-rc_plot <- function(df, title = "What a great run chart!") {
+rc_plot <- function(df) {
   stopifnot(
     any(!is.na(df[["value"]])),
     is.numeric(df[["value"]]),
@@ -33,8 +33,7 @@ rc_plot <- function(df, title = "What a great run chart!") {
   p <- ggplot(rc, aes(label = signif(base_label, digits = 2))) +
     geom_line(aes(date, val), colour = 'skyblue', size = 1.1) +
     geom_point(aes(date, shift), shape = 16, size = 2, colour = 'black',
-               stroke = 2) +
-    labs(title = title)
+               stroke = 2)
 
   for (i in names(base)) {
     p <- p + geom_line(aes_string(rc[["date"]], i), size = 1.3)

@@ -34,8 +34,6 @@ The easiest place to start is with `rc_plot()`. This function takes a data frame
 library(runchart)
 library(ggplot2)
 
-set.seed(0)
-
 n     <- 30
 date  <- seq.Date(Sys.Date(), by = "day", length.out = n)
 value <- c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,1,2,3,2,8,9,7,8,7,9,NA,7,7,8)
@@ -48,8 +46,7 @@ rc_plot(df)
 
 <img src="README-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
-Things to Notice
-----------------
+### Things to Notice
 
 There are several behaviours to notice in the plot above:
 
@@ -63,8 +60,7 @@ There are several behaviours to notice in the plot above:
 
 The functions exported by the `runchart` package have been well tested using the `testthat` package to correctly handle such different scenarios and edge cases.
 
-Going Further
--------------
+### Accessing the Numbers
 
 If you need the fields that sit behind the run chart plot: use `rc_fields()`:
 
@@ -91,13 +87,38 @@ There is no fixed methodology for creating run charts. Here are some functions w
 If you require a single baseline with shifts and trends, you can use the `basic_shift()` and `basic_trend()` functions:
 
 ``` r
-base = median(value, na.rm = T)
 
-basic_shift(base = base, val = value)
-#>  [1] 13 15 16 17 18 19 20 21 22 23 24 25 26 28 29 30
-basic_trend(val = value)
-#> [1]  8 29
+value <- c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,3,4,6,8,8,9,7,8,7,9,NA,7,7,8)
+base  <- median(value, na.rm = T)
+
+# `basic_shift()` and `basic_trend()` return the indices of shifts and trends
+shift       <- trend <- value*NA
+shift_index <- basic_shift(base = base, val = value)
+trend_index <- basic_trend(val = value)
+
+shift[shift_index] <- value[shift_index]
+trend[trend_index] <- value[trend_index]
+base  <- rep(base, length(value))
+
+rc_fields <- data.frame(date  = date,
+                        value = value,
+                        base  = base,
+                        shift = shift,
+                        trend = trend)
+
+ggplot(rc_fields, aes(date, value)) +
+  geom_line(colour = 'skyblue', size = 1.1) +
+  geom_line(aes(y = base)) +
+  geom_line(colour = 'blue', aes(y = trend), size = 1.1) +
+  geom_point(aes(y = shift), shape = 16, size = 2, colour = 'black',
+               stroke = 2) +
+  theme_classic() + theme(axis.title.x=element_blank(),
+                              axis.title.y=element_blank(),
+                              axis.ticks.x=element_blank(),
+                              axis.ticks.y=element_blank())
 ```
+
+<img src="README-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 [1] As defined by the NHS Scotland Quality Improvement Hub
 
