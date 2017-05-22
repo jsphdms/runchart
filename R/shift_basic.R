@@ -32,26 +32,37 @@ basic_shift <- function(base, val, trigger = 6) {
 
   start  <- shift <- min(which(base != val))
   updown <- sign(val[start] - base)
-  shifts <- NULL
+  shifts <- non_useful_obs <- NULL
 
   for (index in (start + 1):length(val)) {
 
-    if (val[index] %in% c(NA, base)) {
+    if (is.na(val[index])) {
       NULL
+    }
+    else if (val[index] == base) {
+      non_useful_obs <- append(non_useful_obs, index)
     }
     else if (sign(val[index] - base) == updown) {
       shift <- append(shift, index)
     }
     else {
-      if (length(shift) >= trigger)
+      non_useful_obs <- intersect(non_useful_obs, min(shift):max(shift))
+
+      if (length(shift) >= trigger) {
         shifts <- append(shifts, shift)
+        shifts <- append(shifts, non_useful_obs)
+      }
       shift <- index
       updown <- -updown
     }
   }
 
-  if (length(shift) >= trigger)
-    shifts <- append(shifts, shift)
+  non_useful_obs <- intersect(non_useful_obs, min(shift):max(shift))
 
-  return(shifts)
+  if (length(shift) >= trigger) {
+    shifts <- append(shifts, shift)
+    shifts <- append(shifts, non_useful_obs)
+  }
+
+  if (is.null(shifts)) return(NULL) else return(sort(unique(shifts)))
 }

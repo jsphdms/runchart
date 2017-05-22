@@ -109,7 +109,7 @@ test_that("multi_shift() handles corner cases", {
       base = c(rep(0,8), rep(NA,7)),
       base_ext = rep(0, 15)
     ),
-    c(rep(NA,8), rep(1,5), NA, 1)
+    c(rep(NA,8), rep(1,5), 0, 1)
   )
 
   # almost shift followed by shift different side
