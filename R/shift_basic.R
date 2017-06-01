@@ -46,7 +46,7 @@ basic_shift <- function(base, val, trigger = 6) {
       shift <- append(shift, index)
     }
     else {
-      non_useful_obs <- intersect(non_useful_obs, min(shift):max(shift))
+      non_useful_obs <- non_useful_obs[non_useful_obs > min(shift)]
 
       if (length(shift) >= trigger) {
         shifts <- append(shifts, shift)
@@ -57,7 +57,7 @@ basic_shift <- function(base, val, trigger = 6) {
     }
   }
 
-  non_useful_obs <- intersect(non_useful_obs, min(shift):max(shift))
+  non_useful_obs <- non_useful_obs[non_useful_obs > min(shift)]
 
   if (length(shift) >= trigger) {
     shifts <- append(shifts, shift)

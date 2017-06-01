@@ -48,7 +48,7 @@ test_that("basic_shift() handles corner cases", {
   expect_equal(basic_shift(base = 0, val = c(rep(c(1,NA),5),NA)), NULL)
   expect_equal(basic_shift(base = 0, val = c(rep(c(1,NA),5),-1)), NULL)
   expect_equal(basic_shift(base = 0, val = c(1:6,NA)), 1:6)
-  expect_equal(basic_shift(base = 0, val = c(1:6,0)), 1:6)
+  expect_equal(basic_shift(base = 0, val = c(1:6,0)), 1:7)
   expect_equal(basic_shift(base = 0, val = c(1:6,NA,1:2)), c(1:6, 8:9))
   expect_equal(basic_shift(base = 0, val = c(1:6,0:2)), c(1:9))
   expect_equal(basic_shift(base = 0, val = c(1:6,-1,1:2)), 1:6)
@@ -61,7 +61,7 @@ test_that("basic_shift() handles multiple shifts", {
   # multiple shifts
   expect_equal(basic_shift(base = 0, val = c(1:6,-1:-6)), 1:12)
   expect_equal(basic_shift(base = 0, val = c(1:6, NA, -1:-6)), c(1:6, 8:13))
-  expect_equal(basic_shift(base = 0, val = c(1:6, 0:-6)), c(1:6, 8:13))
+  expect_equal(basic_shift(base = 0, val = c(1:6, 0:-6)), 1:13)
   expect_equal(basic_shift(base = 0, val = c(1:6, 0:6)), 1:13)
   expect_equal(basic_shift(base = 0, val = c(1:6, NA, 1:6)), c(1:6, 8:13))
 

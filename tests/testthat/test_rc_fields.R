@@ -92,7 +92,7 @@ test_that("rc_fields() handles corner cases", {
     data.frame(base = c(rep(0, 8), rep(NA, 12)),
                base_ext = rep(0, 20),
                base_label = c(0, rep(NA, 19)),
-               shift = c(rep(NA, 8), rep(1, 7), 0, NA, 1, NA, NA),
+               shift = c(rep(NA, 8), rep(1, 7), 0, NA, 1, 0, NA),
                val = c(rep(0,8), rep(1, 7), 0, NA, 1, 0, NA))
   )
 
