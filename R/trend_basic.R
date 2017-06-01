@@ -51,12 +51,14 @@ basic_trend <- function(val, trigger = 5) {
         trends <- append(trends, non_useful_obs)
       }
       trend <- append(max(trend), index)
-      non_useful_obs <- intersect(non_useful_obs, min(trend):max(trend))
+      # non_useful_obs <- intersect(non_useful_obs, min(trend):max(trend))
+      non_useful_obs <- non_useful_obs[non_useful_obs > min(trend)]
       updown <- -updown
     }
   }
 
-  non_useful_obs <- intersect(non_useful_obs, min(trend):max(trend))
+  # non_useful_obs <- intersect(non_useful_obs, min(trend):max(trend))
+  non_useful_obs <- non_useful_obs[non_useful_obs > min(trend)]
 
   if (length(trend) >= trigger) {
     trends <- append(trends, trend)
