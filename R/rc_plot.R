@@ -11,8 +11,7 @@
 #'  value = cumsum(rnorm(n))),
 #'"Here is a run chart")
 #'@seealso \code{\link{rc_fields}} \code{\link{split}}
-#'
-#'@export
+
 rc_plot <- function(df) {
   stopifnot(
     any(!is.na(df[["value"]])),

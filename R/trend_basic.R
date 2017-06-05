@@ -12,7 +12,6 @@
 #'basic_trend(val = 1:7)
 #'@seealso \code{\link{multi_trend()}}
 
-#'@export
 basic_trend <- function(val, trigger = 5) {
   stopifnot(
     is.numeric(trigger),

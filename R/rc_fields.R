@@ -7,7 +7,6 @@
 #'rc_fields(rep(1:20))
 #'@seealso \code{\link{sus}} \code{\link{multi_shift}}
 
-#'@export
 rc_fields <- function(val) {
   stopifnot(
     is.numeric(val),

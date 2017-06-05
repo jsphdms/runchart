@@ -14,7 +14,6 @@
 #'basic_shift(base = 2, val = 1:7)
 #'@seealso \code{\link{shift}}
 
-#'@export
 basic_shift <- function(base, val, trigger = 6) {
   stopifnot(
     is.numeric(base),
