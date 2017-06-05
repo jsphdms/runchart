@@ -3,36 +3,30 @@
 Please note
 -----------
 
-This package is under construction; functionality may change. If this project is of interest to you please get in touch; I'm keen to hear feedback and may be able to incorporate your specific needs into the package.
+This package is under construction and functionality may change. If this project is of interest please get in touch <josephadams@nhs.net>. I'm keen to hear feedback and I may be able to incorporate your specific needs into the package.
 
 Introduction
 ------------
 
 > Because they are simple to make and relatively straightforward to interpret, run charts are one of the most useful tools in quality improvement. - [NHS Scotland Quality Improvement Hub](http://www.qihub.scot.nhs.uk/knowledge-centre/quality-improvement-tools/run-chart.aspx).
 
-Run charts[1] are non-trivial to automate. A number of solutions exist in the healthcare improvement community in Scotland. However the author is only aware of small-scale solutions such as scripts and Excel macros.
+A number of R packages exist to automate statistical process control charts. For example:
 
-These kinds of approaches have the following limitations:
+-   [qicharts](https://cran.r-project.org/web/packages/qicharts/index.html)
+-   [qcc](https://cran.r-project.org/web/packages/qcc/index.html)
+-   [ggQC](https://cran.r-project.org/web/packages/ggQC/index.html)
 
--   Version control is cumbersome and unrealistic.
--   Adding a separate script to an existing workflow is inconvenient and error prone.
--   Scripts are often written to operate under specific conditions; making wider adoption unlikely.
--   Testing edge cases is a time consuming task which is replicated with each new script or macro.
+The `runchart` package is different from the above because it focusses solely on run charts and provides the ability to automatically rephase baselines. The package exports a single easy to use function `runchart()`.
 
-The `runchart` package aims to overcome these limitations by exporting a small number of easy to use and well tested functions.
+Examples
+--------
 
-Getting Started
----------------
-
-To download the package first ensure you are not behind a firewall or using a VPN[2]. Install the package using `install_github()`[3]:
-
-    devtools::install_github('josephjosephadams/runchart')
-
-The easiest place to start is with `rc_plot()`. This function takes a data frame with two columns: date and value:
+By default - shifts and trends are displayed (triggering at 6 and 5 consecutive points respectively) and the baseline is not rephased:
 
 ``` r
 library(runchart)
 library(ggplot2)
+library(tibble)
 
 n     <- 30
 date  <- seq.Date(Sys.Date(), by = "day", length.out = n)
@@ -41,10 +35,46 @@ value <- c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,1,2,3,2,8,9,7,8,7,9,NA,7,7,8)
 df    <- data.frame(date  = date,
                     value = value)
 
-rc_plot(df)
+runchart(df)
 ```
 
 <img src="README-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+
+Both shifts and trends can be independantly suppressed. The baseline can be rephased (triggering at 9 consecutive points):
+
+``` r
+runchart(df, shift = FALSE, trend = FALSE, rephase = TRUE)
+```
+
+<img src="README-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+Access the fields behind these plots by setting the output parameter to `df`:
+
+``` r
+as_tibble(runchart(df, rephase = TRUE, output = 'df'))
+#> # A tibble: 30 × 10
+#>          date value  base base_ext base_label base1 base2 base_ext1
+#>        <date> <dbl> <dbl>    <dbl>      <dbl> <dbl> <dbl>     <dbl>
+#> 1  2017-06-05     0     2        2          2     2    NA         2
+#> 2  2017-06-06     1     2        2         NA     2    NA         2
+#> 3  2017-06-07     5     2        2         NA     2    NA         2
+#> 4  2017-06-08     2     2        2         NA     2    NA         2
+#> 5  2017-06-09     3     2        2         NA     2    NA         2
+#> 6  2017-06-10     8     2        2         NA     2    NA         2
+#> 7  2017-06-11     2     2        2         NA     2    NA         2
+#> 8  2017-06-12     2     2        2         NA     2    NA         2
+#> 9  2017-06-13     3    NA        2         NA    NA    NA         2
+#> 10 2017-06-14     4    NA        2         NA    NA    NA         2
+#> # ... with 20 more rows, and 2 more variables: base_ext2 <dbl>,
+#> #   shift <dbl>
+```
+
+Installation
+------------
+
+This package is available for download from GitHub:
+
+    devtools::install_github('josephjosephadams/runchart')
 
 ### Things to Notice
 
@@ -58,70 +88,4 @@ There are several behaviours to notice in the plot above:
 
 -   **Non-useful observations** are ignored. For example the 15th data point above lands exactly on the first baseline. Therefore it neither breaks nor contributes to the observed shift.
 
-The functions exported by the `runchart` package have been well tested using the `testthat` package to correctly handle such different scenarios and edge cases.
-
-### Accessing the Numbers
-
-If you need the fields that sit behind the run chart plot: use `rc_fields()`:
-
-``` r
-head(rc_fields(value))
-#>   base base_ext base_label shift val
-#> 1    2        2          2    NA   0
-#> 2    2        2         NA    NA   1
-#> 3    2        2         NA    NA   5
-#> 4    2        2         NA    NA   2
-#> 5    2        2         NA    NA   3
-#> 6    2        2         NA    NA   8
-```
-
-The columns `base` and `base_ext` are used for the thick and thin black lines in the plot above. The `base_label` column is used for labelling new baselines. The `shift` and `val` columns are used to plot shifts and the original data.
-
-Different Methodologies
------------------------
-
-There is no fixed methodology for creating run charts. Here are some functions which should help you apply a range of methodologies.
-
-### Single Baseline
-
-If you require a single baseline with shifts and trends, you can use the `basic_shift()` and `basic_trend()` functions:
-
-``` r
-
-value <- c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,3,4,6,8,8,9,7,8,7,9,NA,7,7,8)
-base  <- median(value, na.rm = T)
-
-# `basic_shift()` and `basic_trend()` return the indices of shifts and trends
-shift       <- trend <- value*NA
-shift_index <- basic_shift(base = base, val = value)
-trend_index <- basic_trend(val = value)
-
-shift[shift_index] <- value[shift_index]
-trend[trend_index] <- value[trend_index]
-base  <- rep(base, length(value))
-
-rc_fields <- data.frame(date  = date,
-                        value = value,
-                        base  = base,
-                        shift = shift,
-                        trend = trend)
-
-ggplot(rc_fields, aes(date, value)) +
-  geom_line(colour = 'skyblue', size = 1.1) +
-  geom_line(aes(y = base)) +
-  geom_line(colour = 'blue', aes(y = trend), size = 1.1) +
-  geom_point(aes(y = shift), shape = 16, size = 2, colour = 'black',
-               stroke = 2) +
-  theme_classic() + theme(axis.title.x=element_blank(),
-                              axis.title.y=element_blank(),
-                              axis.ticks.x=element_blank(),
-                              axis.ticks.y=element_blank())
-```
-
-<img src="README-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
-
-[1] As defined by the NHS Scotland Quality Improvement Hub
-
-[2] These can block installation from GitHub
-
-[3] You may need to install the `devtools` package first.
+-   **Trends** are currently only available for fixed baselines (not rephased ones).
