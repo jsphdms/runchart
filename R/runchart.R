@@ -66,14 +66,16 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     return(rc)
   }
   else if (output == 'plot') {
-    p <- ggplot(rc, aes(label = signif(base_label, digits = 2))) +
+    p <- ggplot(rc) +
       geom_line(aes(date, value), colour = 'skyblue', size = 1.1) +
-      theme_classic() + theme(axis.title.x=element_blank(),
-                              axis.title.y=element_blank(),
-                              axis.ticks.x=element_blank(),
-                              axis.ticks.y=element_blank(),
-                              plot.title = element_text(hjust = 0.5)) +
-      geom_text(aes(date, base_label), vjust = 1, hjust = 0, nudge_y = -.15)
+      geom_text(aes(date, base_label, label = signif(base_label, digits = 2)),
+                vjust = 1, hjust = 0, nudge_y = -.15) +
+      theme_classic() +
+      theme(axis.title.x=element_blank(),
+            axis.title.y=element_blank(),
+            axis.ticks.x=element_blank(),
+            axis.ticks.y=element_blank(),
+            plot.title = element_text(hjust = 0.5))
 
     if (rephase) {
       for (i in names(base)) {
@@ -85,8 +87,8 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
         }
     }
     else if (rephase == FALSE) {
-      p <- p + geom_line(aes(x = date, y = base))
-      if (trend) p <- p + geom_line(colour = 'blue', aes(x = date, y = trend),
+      p <- p + geom_line(aes(date, base))
+      if (trend) p <- p + geom_line(colour = 'blue', aes(date, trend),
                                     size = 1.1)
     }
 
