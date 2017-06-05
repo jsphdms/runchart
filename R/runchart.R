@@ -1,15 +1,14 @@
-#'Create a run chart fields for vector \code{val}.
+#'Create a run chart fields for dataframe \code{df}.
 #'
-#'@param df a data.frame. \code{df} must consist of
-#'exactly two columns: a column of type Date called \code{date} and a column of
-#'numeric type called \code{value}.
+#'@param df a data.frame which must consist of exactly two columns: a column of
+#'type Date called \code{date} and a column of numeric type called \code{value}.
 #'@param trend include trends? Defaults to \code{TRUE}.
 #'@param shift include shifts? Defaults to \code{TRUE}.
 #'@param rephase rephase baselines? Defaults to \code{FALSE}.
 #'@param output return a dataframe or a plot? Either one of
 #'\code{c("plot"), ("df")} Defaults to \code{"plot"}.
 #'
-#'@return A data.frame with runchart fields, or a plot.
+#'@return Either a data.frame with runchart fields, or a plot.
 #'@examples
 #'runchart()
 
@@ -41,18 +40,6 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     rc        <- cbind(rc, base, base_ext)
 
     shift_vec <- multi_shift(rc[['value']], rc[['base']], rc[['base_ext']])
-
-
-
-    # rc            <- sus(value)
-    # shift_vec     <- multi_shift(value, rc[['base']], rc[['base_ext']])
-    # rc[['value']] <- value
-    # rc[['date']]  <- df[['date']]
-    #
-    # base <- split(rc[['base']], 'base')
-    # base_ext <- split(rc[['base_ext']], 'base_ext')
-    # rc <- cbind(rc, base)
-    # rc <- cbind(rc, base_ext)
   }
   else if (rephase == FALSE) {
     base  <- median(value, na.rm = T)
@@ -74,8 +61,6 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
   }
 
   if (shift) rc[['shift']] <- shift_vec
-
-
 
   if (output == 'df') {
     return(rc)
@@ -101,7 +86,8 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     }
     else if (rephase == FALSE) {
       p <- p + geom_line(aes(x = date, y = base))
-      if (trend) p <- p + geom_line(colour = 'blue', aes(x = date, y = trend), size = 1.1)
+      if (trend) p <- p + geom_line(colour = 'blue', aes(x = date, y = trend),
+                                    size = 1.1)
     }
 
     if (shift) p <- p + geom_point(aes(date, shift), shape = 16, size = 2,
