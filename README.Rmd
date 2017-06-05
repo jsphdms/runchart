@@ -59,16 +59,3 @@ This package is available for download from GitHub:
 ```
 devtools::install_github('josephjosephadams/runchart')
 ```
-
-### Things to Notice
-There are several behaviours to notice in the outputs above:
-
-* **Rephasing** for each sustained shift (9 consecutive points all above/below the baseline).
-
-* **Shifts** are identified (6 or more consecutive points all above/below the baseline).
-
-* **Missing values** are ignored. For example the 27th data point above is missing, which causes the rephased baseline to be longer than the first.
-
-* **Non-useful observations** are ignored. For example the 15th data point above lands exactly on the first baseline. Therefore it neither breaks nor contributes to the observed shift.
-
-* **Trends** are currently only available for fixed baselines (not rephased ones).
