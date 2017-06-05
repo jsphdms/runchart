@@ -26,14 +26,9 @@ By default - shifts and trends are displayed (triggering at 6 and 5 consecutive 
 ``` r
 library(runchart)
 library(ggplot2)
-library(tibble)
 
-n     <- 30
-date  <- seq.Date(Sys.Date(), by = "day", length.out = n)
-value <- c(0,1,5,2,3,8,2,2,3,4,7,4,3,4,2,3,1,2,3,2,8,9,7,8,7,9,NA,7,7,8)
-
-df    <- data.frame(date  = date,
-                    value = value)
+df <- data.frame(date  = seq.Date(Sys.Date(), by = "day", length.out = 30),
+                 value = c(4,3,3,2,2,3,3,4,4,4,4,3,3,2,2,1,2,1,0,3,3,4,5,6,7,9,8,7,6,6))
 
 runchart(df)
 ```
@@ -51,22 +46,14 @@ runchart(df, shift = FALSE, trend = FALSE, rephase = TRUE)
 Access the fields behind these plots by setting the output parameter to `df`:
 
 ``` r
-as_tibble(runchart(df, rephase = TRUE, output = 'df'))
-#> # A tibble: 30 × 10
-#>          date value  base base_ext base_label base1 base2 base_ext1
-#>        <date> <dbl> <dbl>    <dbl>      <dbl> <dbl> <dbl>     <dbl>
-#> 1  2017-06-05     0     2        2          2     2    NA         2
-#> 2  2017-06-06     1     2        2         NA     2    NA         2
-#> 3  2017-06-07     5     2        2         NA     2    NA         2
-#> 4  2017-06-08     2     2        2         NA     2    NA         2
-#> 5  2017-06-09     3     2        2         NA     2    NA         2
-#> 6  2017-06-10     8     2        2         NA     2    NA         2
-#> 7  2017-06-11     2     2        2         NA     2    NA         2
-#> 8  2017-06-12     2     2        2         NA     2    NA         2
-#> 9  2017-06-13     3    NA        2         NA    NA    NA         2
-#> 10 2017-06-14     4    NA        2         NA    NA    NA         2
-#> # ... with 20 more rows, and 2 more variables: base_ext2 <dbl>,
-#> #   shift <dbl>
+head(runchart(df, output = 'df'))
+#>         date base value trend shift
+#> 1 2017-06-05    3     4    NA    NA
+#> 2 2017-06-06    3     3    NA    NA
+#> 3 2017-06-07    3     3    NA    NA
+#> 4 2017-06-08    3     2    NA    NA
+#> 5 2017-06-09    3     2    NA    NA
+#> 6 2017-06-10    3     3    NA    NA
 ```
 
 Installation
@@ -75,17 +62,3 @@ Installation
 This package is available for download from GitHub:
 
     devtools::install_github('josephjosephadams/runchart')
-
-### Things to Notice
-
-There are several behaviours to notice in the plot above:
-
--   **Rephasing** for each sustained shift (9 consecutive points all above/below the baseline).
-
--   **Shifts** are identified (6 or more consecutive points all above/below the baseline).
-
--   **Missing values** are ignored. For example the 27th data point above is missing, which causes the rephased baseline to be longer than the first.
-
--   **Non-useful observations** are ignored. For example the 15th data point above lands exactly on the first baseline. Therefore it neither breaks nor contributes to the observed shift.
-
--   **Trends** are currently only available for fixed baselines (not rephased ones).
