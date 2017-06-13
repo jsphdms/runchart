@@ -46,13 +46,13 @@ sus <- function(val, trigger = 9) {
     return(df(base, base_ext, base_label))
 
   sus_first <- sus_first(base = base[index1(base)],
-                         val = tail(val, -start),
+                         val = utils::tail(val, -start),
                          trigger = trigger)
 
   while(!is.null(sus_first)) {
 
     sus_first   <- sus_first + start
-    sus_first   <- head(sus_first, -1)
+    sus_first   <- utils::head(sus_first, -1)
 
     base        <- rebase(base, start = sus_first[1],
                         end = sus_first[length(sus_first)],
@@ -63,7 +63,7 @@ sus <- function(val, trigger = 9) {
     start       <- sus_first[length(sus_first)]
 
     sus_first   <- sus_first(base = base_ext[length(base_ext)],
-                           val = tail(val,-start),
+                           val = utils::tail(val,-start),
                            trigger = trigger)
 
   }

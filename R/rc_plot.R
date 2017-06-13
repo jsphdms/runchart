@@ -20,6 +20,8 @@ rc_plot <- function(df) {
     nrow(df) > 0
   )
 
+  base_label <- val <- shift <- NULL
+
   rc <- cbind(df[, names(df) != "value", drop = F], rc_fields(df[["value"]]))
 
   base <- split(rc[['base']], 'base')
@@ -27,8 +29,6 @@ rc_plot <- function(df) {
 
   rc <- cbind(rc, base)
   rc <- cbind(rc, base_ext)
-
-
 
   p <- ggplot2::ggplot(rc, ggplot2::aes(label = signif(base_label, digits = 2))) +
     ggplot2::geom_line(ggplot2::aes(date, val), colour = 'skyblue', size = 1.1) +

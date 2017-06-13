@@ -75,7 +75,7 @@ rebase <- function(base, start = 1, end = length(base), new_vals) {
     length(base) >= 1,
     length(base) >= start
     )
-  base[start:end] <- median(new_vals)
+  base[start:end] <- stats::median(new_vals)
   base
 }
 
