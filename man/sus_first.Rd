@@ -22,9 +22,10 @@ A sustained shift is defined by 9 consecutive data points either all above or
 all below the current baseline.
 }
 \examples{
-sus_first(rep(0,20), 1:20, trigger = 9)
+runchart:::sus_first(base = 0, val = 1:20)
 }
 \seealso{
 \code{\link{ticker}} \code{\link{sus}}
 }
+\keyword{internal}
 

@@ -18,6 +18,6 @@ A logical vector.
 Convenience infix function.
 }
 \examples{
-1:3 \%notin\% 3:5
+runchart:::`\%notin\%`(1:3, 3:5)
 }
 

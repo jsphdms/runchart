@@ -10,7 +10,11 @@
 #'
 #'@return Either a data.frame with runchart fields, or a plot.
 #'@examples
-#'runchart()
+#'df <- data.frame(
+#'date  = seq.Date(Sys.Date(), by = "day", length.out = 30),
+#'value = c(4,3,3,2,2,3,3,4,4,4,4,3,3,2,2,1,2,1,0,3,3,4,5,6,7,9,8,7,6,6)
+#')
+#'runchart(df)
 
 #'@export
 runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = 'plot') {
@@ -67,33 +71,33 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
   }
   else if (output == 'plot') {
     p <- ggplot2::ggplot(rc) +
-      ggplot2::geom_line(aes(date, value), colour = 'skyblue', size = 1.1) +
-      ggplot2::geom_text(aes(date, base_label,
+      ggplot2::geom_line(ggplot2::aes(date, value), colour = 'skyblue', size = 1.1) +
+      ggplot2::geom_text(ggplot2::aes(date, base_label,
                              label = signif(base_label, digits = 2)), vjust = 1,
                          hjust = 0, nudge_y = -.15) +
       ggplot2::theme_classic() +
-      ggplot2::theme(axis.title.x=element_blank(),
-                     axis.title.y=element_blank(),
-                     axis.ticks.x=element_blank(),
-                     axis.ticks.y=element_blank(),
-                     plot.title = element_text(hjust = 0.5))
+      ggplot2::theme(axis.title.x=ggplot2::element_blank(),
+                     axis.title.y=ggplot2::element_blank(),
+                     axis.ticks.x=ggplot2::element_blank(),
+                     axis.ticks.y=ggplot2::element_blank(),
+                     plot.title = ggplot2::element_text(hjust = 0.5))
 
     if (rephase) {
       for (i in names(base)) {
-        p <- p + ggplot2::geom_line(aes_string("date", i), size = 1.3)
+        p <- p + ggplot2::geom_line(ggplot2::aes_string("date", i), size = 1.3)
         }
 
       for (i in names(base_ext)) {
-        p <- p + ggplot2::geom_line(aes_string("date", i))
+        p <- p + ggplot2::geom_line(ggplot2::aes_string("date", i))
         }
     }
     else if (rephase == FALSE) {
-      p <- p + ggplot2::geom_line(aes(date, base))
-      if (trend) p <- p + ggplot2::geom_line(colour = 'blue', aes(date, trend),
+      p <- p + ggplot2::geom_line(ggplot2::aes(date, base))
+      if (trend) p <- p + ggplot2::geom_line(colour = 'blue', ggplot2::aes(date, trend),
                                     size = 1.1)
     }
 
-    if (shift) p <- p + ggplot2::geom_point(aes(date, shift), shape = 16,
+    if (shift) p <- p + ggplot2::geom_point(ggplot2::aes(date, shift), shape = 16,
                                             size = 2, colour = 'black',
                                             stroke = 2)
     return(p)

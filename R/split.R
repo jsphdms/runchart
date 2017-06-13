@@ -9,14 +9,20 @@
 #'  \code{vname2}, \code{vname3}, etc
 #'@return A data.frame with a column for each new value of \code{v}.
 #'@examples
-#'split(c(1,1,1,1,1,1,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3))
+#'runchart:::split(
+#'v = c(1,1,1,1,1,1,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3),
+#'vname = "example"
+#')
 #'@seealso \code{\link{sus}} \code{\link{multi_shift}}
+#'@keywords internal
 
 split <- function(v, vname) {
   stopifnot(
     any(!is.na(v)),
     is.numeric(v),
-    length(v) > 0
+    length(v) > 0,
+    is.character(vname),
+    length(vname) == 1
   )
 
   index <- 1

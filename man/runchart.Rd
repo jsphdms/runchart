@@ -27,6 +27,10 @@ Either a data.frame with runchart fields, or a plot.
 Create a run chart fields for dataframe \code{df}.
 }
 \examples{
-runchart()
+df <- data.frame(
+date  = seq.Date(Sys.Date(), by = "day", length.out = 30),
+value = c(4,3,3,2,2,3,3,4,4,4,4,3,3,2,2,1,2,1,0,3,3,4,5,6,7,9,8,7,6,6)
+)
+runchart(df)
 }
 

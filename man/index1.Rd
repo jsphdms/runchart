@@ -16,7 +16,7 @@ A numeric vector of length one.
 Index of the first non-NA element of x.
 }
 \examples{
-index1(c(NA,1:9))
+runchart:::index1(c(NA,1:9))
 }
 \seealso{
 \code{\link{elems8}}, \code{\link{index8}}

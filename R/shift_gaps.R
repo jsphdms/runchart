@@ -9,8 +9,9 @@
 #'  \code{base}. If \code{base} has no \code{NAs}, return \code{NULL}. If a
 #'  block of \code{NAs} exists before the first sustained shift it is ignored.
 #'@examples
-#'base_gaps(c(rep(NA,5), rep(3,8), rep(NA,25)))
+#'runchart:::base_gaps(c(rep(NA,5), rep(3,8), rep(NA,25)))
 #'@seealso \code{\link{ticker}} \code{\link{multi_shift}}
+#'@keywords internal
 
 base_gaps <- function(base) {
   stopifnot(

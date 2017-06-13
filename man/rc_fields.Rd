@@ -17,9 +17,10 @@ A data.frame with four columns: 1. The original data. 2. A base line.
 Create run chart fields for vector \code{val}.
 }
 \examples{
-rc_fields(rep(1:20))
+runchart:::rc_fields(rep(1:20))
 }
 \seealso{
 \code{\link{sus}} \code{\link{multi_shift}}
 }
+\keyword{internal}
 

@@ -27,9 +27,13 @@ into dataframes with a column for each rephased value. \code{split} is a
 utility function which splits a vector into a dataframe for this purpose.
 }
 \examples{
-split(c(1,1,1,1,1,1,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3))
+runchart:::split(
+v = c(1,1,1,1,1,1,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3),
+vname = "example"
+)
 }
 \seealso{
 \code{\link{sus}} \code{\link{multi_shift}}
 }
+\keyword{internal}
 

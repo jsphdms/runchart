@@ -18,13 +18,14 @@ A plot.
 Plot a run chart.
 }
 \examples{
-rc_plot(
+n <- 30
+runchart:::rc_plot(
 data.frame(
  date = seq.Date(Sys.Date(), by = "week", length.out = n),
- value = cumsum(rnorm(n))),
-"Here is a run chart")
+ value = cumsum(rnorm(n))))
 }
 \seealso{
 \code{\link{rc_fields}} \code{\link{split}}
 }
+\keyword{internal}
 

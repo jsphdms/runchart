@@ -12,8 +12,10 @@
 #'@return A vector with all shifts observed in \code{val}. If no shifts observed,
 #'  a vector full of \code{NA}s.
 #'@examples
-#'multi_shift(rep(1:20), bases = c(rep(4.5,8), rep(NA,12)), trigger = 9)
+#'runchart:::multi_shift(val = c(rep(0,8), rep(1,8)),
+#'base = c(rep(0,8), rep(NA,8)), base_ext = rep(0, 16))
 #'@seealso \code{\link{basic_shift}}
+#'@keywords internal
 
 multi_shift <- function(val, base, base_ext, trigger = 6) {
   stopifnot(

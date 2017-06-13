@@ -23,10 +23,11 @@ the indices of all shifts relative to a single (constant) baseline. For a
 changing baseline this function is used multiple times.
 }
 \examples{
-basic_shift(base = 2, val = 1:8)
-basic_shift(base = 2, val = 1:7)
+runchart:::basic_shift(base = 2, val = 1:8)
+runchart:::basic_shift(base = 2, val = 1:7)
 }
 \seealso{
 \code{\link{multi_shift}}
 }
+\keyword{internal}
 

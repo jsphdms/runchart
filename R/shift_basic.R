@@ -10,9 +10,10 @@
 #'@param trigger The default number of observations for a shift is 6.
 #'@return If shifts are found, the indices of these shifts. If not, \code{NULL}.
 #'@examples
-#'basic_shift(base = 2, val = 1:8)
-#'basic_shift(base = 2, val = 1:7)
+#'runchart:::basic_shift(base = 2, val = 1:8)
+#'runchart:::basic_shift(base = 2, val = 1:7)
 #'@seealso \code{\link{multi_shift}}
+#'@keywords internal
 
 basic_shift <- function(base, val, trigger = 6) {
   stopifnot(

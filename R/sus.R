@@ -20,8 +20,9 @@
 #'  previous column, but with each median value extended to either the end of
 #'  \code{val} or the beginning of the next sustained shift.
 #'@examples
-#'sus(rep(1:20), trigger = 9)
+#'runchart:::sus(rep(1:20), trigger = 9)
 #'@seealso \code{\link{ticker}}
+#'@keywords internal
 
 sus <- function(val, trigger = 9) {
   stopifnot(

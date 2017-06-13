@@ -24,7 +24,7 @@ Rebase \code{base} starting from \code{start} until \code{start} using the
 median of \code{new_vals}
 }
 \examples{
-rebase(1:9, start = 4, new_vals = 1)
-rebase(1:9, start = 4, new_vals = c(1,2,3))
+runchart:::rebase(1:9, start = 4, new_vals = 1)
+runchart:::rebase(1:9, start = 4, new_vals = c(1,2,3))
 }
 

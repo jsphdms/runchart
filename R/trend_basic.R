@@ -8,9 +8,10 @@
 #'@param trigger The default number of observations for a trend is 5.
 #'@return If trends are found, the indices of these trends. If not, \code{NULL}.
 #'@examples
-#'basic_trend(val = 1:8)
-#'basic_trend(val = 1:7)
+#'runchart:::basic_trend(val = 1:8)
+#'runchart:::basic_trend(val = 1:7)
 #'@seealso \code{\link{basic_shift}}
+#'@keywords internal
 
 basic_trend <- function(val, trigger = 5) {
   stopifnot(

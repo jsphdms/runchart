@@ -20,10 +20,11 @@ the indices of all trends relative to a single (constant) baseline. For a
 changing baseline this function is used multiple times by \code{multi_trend()}.
 }
 \examples{
-basic_trend(val = 1:8)
-basic_trend(val = 1:7)
+runchart:::basic_trend(val = 1:8)
+runchart:::basic_trend(val = 1:7)
 }
 \seealso{
 \code{\link{basic_shift}}
 }
+\keyword{internal}
 

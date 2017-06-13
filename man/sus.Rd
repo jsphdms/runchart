@@ -33,9 +33,10 @@ shift. Given a vector \code{val} the function \code{sus()} returns both the
 grey and black lines in a \code{data.frame}.
 }
 \examples{
-sus(rep(1:20), trigger = 9)
+runchart:::sus(rep(1:20), trigger = 9)
 }
 \seealso{
 \code{\link{ticker}}
 }
+\keyword{internal}
 

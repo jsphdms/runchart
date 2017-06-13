@@ -18,7 +18,7 @@ A numeric vector of length one.
 Index of the nth non-NA element of x where n defaults to 8.
 }
 \examples{
-index8(c(NA,1:9))
+runchart:::index8(c(NA,1:9))
 }
 \seealso{
 \code{\link{elems8}}, \code{\link{index1}}

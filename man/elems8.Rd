@@ -20,10 +20,11 @@ points. \code{elems8(x, n)} finds the first n non-NA elements of x
 where n defaults to 8.
 }
 \examples{
-elems8(1:9)
-elems8(1:9, 5)
+runchart:::elems8(1:9)
+runchart:::elems8(1:9, 5)
 }
 \seealso{
 \code{\link{index1}}, \code{\link{index8}}
 }
+\keyword{internal}
 

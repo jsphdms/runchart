@@ -26,13 +26,13 @@ until it returns either: the indices of the first sustained shift; or the
 string \code{No sus shift found}.
 }
 \examples{
-tick <- ticker(base = 2, val = 1:15, start = 1, updown = -1)
+tick <- runchart:::ticker(base = 2, val = 1:15)
 tick()
 tick()
 tick()
-etc
 }
 \seealso{
 \code{\link{sus}}
 }
+\keyword{internal}
 

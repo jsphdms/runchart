@@ -8,9 +8,10 @@
 #'@param n How many non-NA elements of x should be returned?
 #'@return A numeric vector.
 #'@examples
-#'elems8(1:9)
-#'elems8(1:9, 5)
+#'runchart:::elems8(1:9)
+#'runchart:::elems8(1:9, 5)
 #'@seealso \code{\link{index1}}, \code{\link{index8}}
+#'@keywords internal
 elems8 <- function(x, n = 8L) {
   if (!is.numeric(c(x, n)))
     stop("Both arguments must be of type numeric. Is there an 'NA' where there should be an NA?"
@@ -35,7 +36,7 @@ elems8 <- function(x, n = 8L) {
 #'@inheritParams elems8
 #'@return A numeric vector of length one.
 #'@examples
-#'index1(c(NA,1:9))
+#'runchart:::index1(c(NA,1:9))
 #'@seealso \code{\link{elems8}}, \code{\link{index8}}
 index1 <- function(x) {
   min(which(!is.na(x)))
@@ -47,7 +48,7 @@ index1 <- function(x) {
 #'@inheritParams elems8
 #'@return A numeric vector of length one.
 #'@examples
-#'index8(c(NA,1:9))
+#'runchart:::index8(c(NA,1:9))
 #'@seealso \code{\link{elems8}}, \code{\link{index1}}
 index8 <- function(x,  n = 8L) {
   max(which(!is.na(x))[1:n])
@@ -62,8 +63,8 @@ index8 <- function(x,  n = 8L) {
 #'@param new_vals Rebase \code{base} using the median of \code{new_vals}
 #'@return A numeric vector.
 #'@examples
-#'rebase(1:9, start = 4, new_vals = 1)
-#'rebase(1:9, start = 4, new_vals = c(1,2,3))
+#'runchart:::rebase(1:9, start = 4, new_vals = 1)
+#'runchart:::rebase(1:9, start = 4, new_vals = c(1,2,3))
 rebase <- function(base, start = 1, end = length(base), new_vals) {
   stopifnot(
     is.numeric(base),
@@ -85,8 +86,8 @@ rebase <- function(base, start = 1, end = length(base), new_vals) {
 #'@param base_label A character vector.
 #'@return A \code{data.frame} with 2 columns: \code{base} and \code{base_ext}.
 #'@examples
-#'df(c(rep(4.5, 8), NA), rep(4.5, 9))
-df <- function(base, base_ext, base_label) {
+#'runchart:::df(c(rep(4.5, 8), NA), rep(4.5, 9))
+df <- function(base, base_ext, base_label = rep(NA_character_, length(base))) {
   data.frame(base = base,
              base_ext = base_ext,
              base_label = base_label)
@@ -98,7 +99,7 @@ df <- function(base, base_ext, base_label) {
 #'@param y A numeric vector.
 #'@return A logical vector.
 #'@examples
-#'1:3 %notin% 3:5
+#'runchart:::`%notin%`(1:3, 3:5)
 `%notin%` <- function(x,y) {
   !(x %in% y)
 }

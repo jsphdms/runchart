@@ -9,8 +9,9 @@
 #'@return The indices of the first sustained shift of \code{val}. \code{sus_first}
 #'  returns \code{NULL} if no sustained shift is found.
 #'@examples
-#'sus_first(rep(0,20), 1:20, trigger = 9)
+#'runchart:::sus_first(base = 0, val = 1:20)
 #'@seealso \code{\link{ticker}} \code{\link{sus}}
+#'@keywords internal
 
 sus_first <- function(base, val, trigger = 9) {
 

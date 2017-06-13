@@ -26,9 +26,11 @@ Shifts occur when 6 or more consecutive useful observations (non-NA and
 different from the current baseline) land all above/below the baseline.
 }
 \examples{
-multi_shift(rep(1:20), bases = c(rep(4.5,8), rep(NA,12)), trigger = 9)
+runchart:::multi_shift(val = c(rep(0,8), rep(1,8)),
+base = c(rep(0,8), rep(NA,8)), base_ext = rep(0, 16))
 }
 \seealso{
 \code{\link{basic_shift}}
 }
+\keyword{internal}
 

@@ -4,7 +4,7 @@
 \alias{df}
 \title{Create a \code{data.frame} from the vectors \code{base} and \code{base_ext}.}
 \usage{
-df(base, base_ext, base_label)
+df(base, base_ext, base_label = rep(NA_character_, length(base)))
 }
 \arguments{
 \item{base}{A numeric vector.}
@@ -20,6 +20,6 @@ A \code{data.frame} with 2 columns: \code{base} and \code{base_ext}.
 Create a \code{data.frame} from the vectors \code{base} and \code{base_ext}.
 }
 \examples{
-df(c(rep(4.5, 8), NA), rep(4.5, 9))
+runchart:::df(c(rep(4.5, 8), NA), rep(4.5, 9))
 }
 
