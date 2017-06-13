@@ -2,14 +2,17 @@
 % Please edit documentation in R/utils.R
 \name{rebase}
 \alias{rebase}
-\title{Rebase \code{base} starting from \code{start} using the median of \code{new_vals}}
+\title{Rebase \code{base} starting from \code{start} until \code{start} using the
+median of \code{new_vals}}
 \usage{
 rebase(base, start = 1, end = length(base), new_vals)
 }
 \arguments{
 \item{base}{A numeric vector.}
 
-\item{start}{Where to rebase \code{base} from.}
+\item{start}{Where to rebase \code{base} from (inclusive).}
+
+\item{end}{Where to rebase \code{base} until (inclusive).}
 
 \item{new_vals}{Rebase \code{base} using the median of \code{new_vals}}
 }
@@ -17,7 +20,8 @@ rebase(base, start = 1, end = length(base), new_vals)
 A numeric vector.
 }
 \description{
-Rebase \code{base} starting from \code{start} using the median of \code{new_vals}
+Rebase \code{base} starting from \code{start} until \code{start} using the
+median of \code{new_vals}
 }
 \examples{
 rebase(1:9, start = 4, new_vals = 1)

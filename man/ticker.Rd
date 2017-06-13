@@ -11,11 +11,8 @@ ticker(base, val, trigger = 9)
 
 \item{val}{A numeric vector. The vector \code{ticker} iterates over.}
 
-\item{start}{The index of the first useful element of \code{val}. Begin
-iterating here.}
-
-\item{updown}{Takes value \code{1} or \code{-1}. Is the first useful element
-of \code{val} above (\code{1}) or below (\code{-1}) \code{base}?}
+\item{trigger}{A numeric vector of length one. Specifies how many consecutive
+points are required for a sustained shift.}
 }
 \value{
 \code{NULL}, until either a sustained shift is found (then it returns

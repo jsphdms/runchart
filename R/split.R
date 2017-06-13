@@ -5,6 +5,8 @@
 #'utility function which splits a vector into a dataframe for this purpose.
 #'
 #'@param v a vector for \code{split} to split into a dataframe.
+#'@param vname the columns of the returned dataframe are named \code{vname1},
+#'  \code{vname2}, \code{vname3}, etc
 #'@return A data.frame with a column for each new value of \code{v}.
 #'@examples
 #'split(c(1,1,1,1,1,1,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3))

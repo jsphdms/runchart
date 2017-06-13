@@ -10,6 +10,8 @@ df(base, base_ext, base_label)
 \item{base}{A numeric vector.}
 
 \item{base_ext}{A numeric vector.}
+
+\item{base_label}{A character vector.}
 }
 \value{
 A \code{data.frame} with 2 columns: \code{base} and \code{base_ext}.

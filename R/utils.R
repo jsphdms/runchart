@@ -53,10 +53,12 @@ index8 <- function(x,  n = 8L) {
   max(which(!is.na(x))[1:n])
 }
 
-#'Rebase \code{base} starting from \code{start} using the median of \code{new_vals}
+#'Rebase \code{base} starting from \code{start} until \code{start} using the
+#'median of \code{new_vals}
 #'
 #'@param base A numeric vector.
-#'@param start Where to rebase \code{base} from.
+#'@param start Where to rebase \code{base} from (inclusive).
+#'@param end Where to rebase \code{base} until (inclusive).
 #'@param new_vals Rebase \code{base} using the median of \code{new_vals}
 #'@return A numeric vector.
 #'@examples
@@ -80,6 +82,7 @@ rebase <- function(base, start = 1, end = length(base), new_vals) {
 #'
 #'@param base A numeric vector.
 #'@param base_ext A numeric vector.
+#'@param base_label A character vector.
 #'@return A \code{data.frame} with 2 columns: \code{base} and \code{base_ext}.
 #'@examples
 #'df(c(rep(4.5, 8), NA), rep(4.5, 9))

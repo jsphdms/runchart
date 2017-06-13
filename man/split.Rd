@@ -12,6 +12,9 @@ split(v, vname)
 }
 \arguments{
 \item{v}{a vector for \code{split} to split into a dataframe.}
+
+\item{vname}{the columns of the returned dataframe are named \code{vname1},
+\code{vname2}, \code{vname3}, etc}
 }
 \value{
 A data.frame with a column for each new value of \code{v}.
