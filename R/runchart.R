@@ -66,34 +66,36 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     return(rc)
   }
   else if (output == 'plot') {
-    p <- ggplot(rc) +
-      geom_line(aes(date, value), colour = 'skyblue', size = 1.1) +
-      geom_text(aes(date, base_label, label = signif(base_label, digits = 2)),
-                vjust = 1, hjust = 0, nudge_y = -.15) +
-      theme_classic() +
-      theme(axis.title.x=element_blank(),
-            axis.title.y=element_blank(),
-            axis.ticks.x=element_blank(),
-            axis.ticks.y=element_blank(),
-            plot.title = element_text(hjust = 0.5))
+    p <- ggplot2::ggplot(rc) +
+      ggplot2::geom_line(aes(date, value), colour = 'skyblue', size = 1.1) +
+      ggplot2::geom_text(aes(date, base_label,
+                             label = signif(base_label, digits = 2)), vjust = 1,
+                         hjust = 0, nudge_y = -.15) +
+      ggplot2::theme_classic() +
+      ggplot2::theme(axis.title.x=element_blank(),
+                     axis.title.y=element_blank(),
+                     axis.ticks.x=element_blank(),
+                     axis.ticks.y=element_blank(),
+                     plot.title = element_text(hjust = 0.5))
 
     if (rephase) {
       for (i in names(base)) {
-        p <- p + geom_line(aes_string("date", i), size = 1.3)
+        p <- p + ggplot2::geom_line(aes_string("date", i), size = 1.3)
         }
 
       for (i in names(base_ext)) {
-        p <- p + geom_line(aes_string("date", i))
+        p <- p + ggplot2::geom_line(aes_string("date", i))
         }
     }
     else if (rephase == FALSE) {
-      p <- p + geom_line(aes(date, base))
-      if (trend) p <- p + geom_line(colour = 'blue', aes(date, trend),
+      p <- p + ggplot2::geom_line(aes(date, base))
+      if (trend) p <- p + ggplot2::geom_line(colour = 'blue', aes(date, trend),
                                     size = 1.1)
     }
 
-    if (shift) p <- p + geom_point(aes(date, shift), shape = 16, size = 2,
-                                   colour = 'black', stroke = 2)
+    if (shift) p <- p + ggplot2::geom_point(aes(date, shift), shape = 16,
+                                            size = 2, colour = 'black',
+                                            stroke = 2)
     return(p)
   }
 }
