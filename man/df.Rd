@@ -4,7 +4,7 @@
 \alias{df}
 \title{Create a \code{data.frame} from the vectors \code{base} and \code{base_ext}.}
 \usage{
-df(base, base_ext)
+df(base, base_ext, base_label)
 }
 \arguments{
 \item{base}{A numeric vector.}

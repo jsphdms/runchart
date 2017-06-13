@@ -10,7 +10,7 @@
 #'  returns \code{NULL} if no sustained shift is found.
 #'@examples
 #'sus_first(rep(0,20), 1:20, trigger = 9)
-#'@seealso \code{\link{ticker}} \code{\link{sus()}}
+#'@seealso \code{\link{ticker}} \code{\link{sus}}
 
 sus_first <- function(base, val, trigger = 9) {
 

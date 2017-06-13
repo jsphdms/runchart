@@ -25,6 +25,6 @@ all below the current baseline.
 sus_first(rep(0,20), 1:20, trigger = 9)
 }
 \seealso{
-\code{\link{ticker}} \code{\link{sus()}}
+\code{\link{ticker}} \code{\link{sus}}
 }
 

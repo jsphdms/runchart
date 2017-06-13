@@ -10,7 +10,7 @@
 #'@examples
 #'basic_trend(val = 1:8)
 #'basic_trend(val = 1:7)
-#'@seealso \code{\link{multi_trend()}}
+#'@seealso \code{\link{basic_shift}}
 
 basic_trend <- function(val, trigger = 5) {
   stopifnot(

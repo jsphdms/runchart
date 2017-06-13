@@ -8,7 +8,7 @@
 #'@return A data.frame with a column for each new value of \code{v}.
 #'@examples
 #'split(c(1,1,1,1,1,1,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3))
-#'@seealso \code{\link{sus}} \code{\link{shift}}
+#'@seealso \code{\link{sus}} \code{\link{multi_shift}}
 
 split <- function(v, vname) {
   stopifnot(

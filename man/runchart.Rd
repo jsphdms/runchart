@@ -2,24 +2,31 @@
 % Please edit documentation in R/runchart.R
 \name{runchart}
 \alias{runchart}
-\title{Create run chart fields for vector \code{val}.}
+\title{Create a run chart fields for dataframe \code{df}.}
 \usage{
-runchart(val)
+runchart(df, shift = TRUE, trend = TRUE, rephase = FALSE,
+  output = "plot")
 }
 \arguments{
-\item{val}{create run chart fields for \code{val}.}
+\item{df}{a data.frame which must consist of exactly two columns: a column of
+type Date called \code{date} and a column of numeric type called \code{value}.}
+
+\item{shift}{include shifts? Defaults to \code{TRUE}.}
+
+\item{trend}{include trends? Defaults to \code{TRUE}.}
+
+\item{rephase}{rephase baselines? Defaults to \code{FALSE}.}
+
+\item{output}{return a dataframe or a plot? Either one of
+\code{c("plot"), ("df")} Defaults to \code{"plot"}.}
 }
 \value{
-A data.frame with four columns: 1. The original data. 2. A base line.
- 3. An extended base line. 4: Shifts.
+Either a data.frame with runchart fields, or a plot.
 }
 \description{
-Create run chart fields for vector \code{val}.
+Create a run chart fields for dataframe \code{df}.
 }
 \examples{
-runchart(rep(1:20))
-}
-\seealso{
-\code{\link{sus}} \code{\link{shift}}
+runchart()
 }
 

@@ -12,7 +12,7 @@
 #'@examples
 #'basic_shift(base = 2, val = 1:8)
 #'basic_shift(base = 2, val = 1:7)
-#'@seealso \code{\link{shift}}
+#'@seealso \code{\link{multi_shift}}
 
 basic_shift <- function(base, val, trigger = 6) {
   stopifnot(
