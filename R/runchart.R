@@ -31,6 +31,7 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     nrow(df) > 0
   )
 
+  df <- df[order(df[["date"]]),]
   value <- df[["value"]]
   date  <- df[["date"]]
 
