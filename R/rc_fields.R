@@ -15,10 +15,10 @@ rc_fields <- function(val) {
   )
 
   rc <- sus(val)
-  shift <- multi_shift(val, rc[['base']], rc[['base_ext']])
+  shift <- multi_shift(val, rc[["base"]], rc[["base_ext"]])
 
-  rc[['shift']] <- shift
-  rc[['val']] <- val
+  rc[["shift"]] <- shift
+  rc[["val"]] <- val
 
   return(rc)
 }

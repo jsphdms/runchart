@@ -32,24 +32,25 @@ sus <- function(val, trigger = 9) {
     length(val) > 0
   )
 
-  base <- base_label <- val*NA
+  base <- base_label <- val * NA
 
   if (length(which(!is.na(val))) < trigger - 1)
     return(df(base, base, base_label))
 
-  base      <- rebase(base, start = index1(val), end = index8(val), new_vals = elems8(val))
+  base      <- rebase(base, start = index1(val), end = index8(val),
+                      new_vals = elems8(val))
   base_ext  <- rebase(base, start = index1(val), new_vals = base[index1(base)])
   start     <- index8(val)
   base_label[index1(val)] <- base[index1(val)]
 
-  if (length(which(!is.na(val))) < 2*trigger - 1)
+  if (length(which(!is.na(val))) < 2 * trigger - 1)
     return(df(base, base_ext, base_label))
 
   sus_first <- sus_first(base = base[index1(base)],
                          val = utils::tail(val, -start),
                          trigger = trigger)
 
-  while(!is.null(sus_first)) {
+  while (!is.null(sus_first)) {
 
     sus_first   <- sus_first + start
     sus_first   <- utils::head(sus_first, -1)
@@ -63,7 +64,7 @@ sus <- function(val, trigger = 9) {
     start       <- sus_first[length(sus_first)]
 
     sus_first   <- sus_first(base = base_ext[length(base_ext)],
-                           val = utils::tail(val,-start),
+                           val = utils::tail(val, -start),
                            trigger = trigger)
 
   }

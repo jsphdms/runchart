@@ -30,14 +30,14 @@ split <- function(v, vname) {
 
   # Build an ordered list of each base line
   for (i in index1(v):length(v)) {
-    if(!is.na(v[i]) && v[i] != new_bases[length(new_bases)])
+    if (!is.na(v[i]) && v[i] != new_bases[length(new_bases)])
       new_bases <- append(new_bases, v[i])
   }
 
   ncols <- length(new_bases)
 
   # Create a data frame with a column for each different value of v
-  df <- as.data.frame(tcrossprod(v, rep(1,ncols)))
+  df <- as.data.frame(tcrossprod(v, rep(1, ncols)))
   colnames(df) <- paste0(vname, 1:ncols)
 
   # Remove values until we have distinct non-overlapping columns for each base
@@ -50,8 +50,10 @@ split <- function(v, vname) {
     for (i in (top + 1):length(v)) {
       if (is.na(col[i]) || col[i] != col[i - 1]) {
 
-        df[[paste0(vname, index)]][-(1:(i-1))] <- NA_real_
-        if (index < length(df)) df[1:(i-1), (index + 1):length(df)] <- NA_real_
+        df[[paste0(vname, index)]][- (1:(i - 1))] <- NA_real_
+        if (index < length(df)) {
+          df[1:(i - 1), (index + 1):length(df)] <- NA_real_
+        }
 
         index <- index + 1
         break

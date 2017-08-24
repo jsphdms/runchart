@@ -26,11 +26,11 @@ base_gaps <- function(base) {
   index <- min(which(!is.na(base)))
   shift <- NULL
 
-  while(TRUE) {
+  while (TRUE) {
 
     wbase <- base[index:length(base)]
 
-    if(all(!is.na(wbase)))
+    if (all(!is.na(wbase)))
       return(shift)
 
     start <- min(which(is.na(wbase))) + index - 1

@@ -17,22 +17,23 @@
 #'runchart(df)
 
 #'@export
-runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = 'plot') {
+runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE,
+                     output = "plot") {
   stopifnot(
     is.data.frame(df),
     setequal(names(df), c("date", "value")),
     is.numeric(df[["value"]]),
-    inherits(df[["date"]], 'Date') || inherits(df[["date"]], 'POSIXct'),
+    inherits(df[["date"]], "Date") || inherits(df[["date"]], "POSIXct"),
     is.logical(c(trend, shift, rephase)),
     length(shift) == 1,
     length(trend) == 1,
     length(rephase) == 1,
-    output %in% c('df', 'plot'),
+    output %in% c("df", "plot"),
     nrow(df) > 0
   )
 
   df[["date"]] <- as.Date(df[["date"]])
-  df <- df[order(df[["date"]]),]
+  df <- df[order(df[["date"]]), ]
 
   value <- df[["value"]]
   date  <- df[["date"]]
@@ -40,18 +41,18 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
 # Regardless of the requested output, we always need a dataframe --------------
 
   if (rephase) {
-    rc        <- cbind(df, sus(df[['value']]))
+    rc        <- cbind(df, sus(df[["value"]]))
 
-    base      <- split(rc[['base']], 'base')
-    base_ext  <- split(rc[['base_ext']], 'base_ext')
+    base      <- split(rc[["base"]], "base")
+    base_ext  <- split(rc[["base_ext"]], "base_ext")
     rc        <- cbind(rc, base, base_ext)
 
-    shift_vec <- multi_shift(rc[['value']], rc[['base']], rc[['base_ext']])
+    shift_vec <- multi_shift(rc[["value"]], rc[["base"]], rc[["base_ext"]])
   }
   else if (rephase == FALSE) {
     base  <- stats::median(value, na.rm = T)
 
-    shift_vec     <- trend_vec <- base_label <- value*NA_real_
+    shift_vec     <- trend_vec <- base_label <- value * NA_real_
     shift_index   <- basic_shift(base = base, val = value)
     trend_index   <- basic_trend(val = value)
 
@@ -64,25 +65,26 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
                      base  = base,
                      value = value)
 
-    if (trend) rc[['trend']] <- trend_vec
+    if (trend) rc[["trend"]] <- trend_vec
   }
 
-  if (shift) rc[['shift']] <- shift_vec
+  if (shift) rc[["shift"]] <- shift_vec
 
-  if (output == 'df') {
+  if (output == "df") {
     return(rc)
   }
-  else if (output == 'plot') {
+  else if (output == "plot") {
     p <- ggplot2::ggplot(rc) +
-      ggplot2::geom_line(ggplot2::aes(date, value), colour = 'skyblue', size = 1.1) +
+      ggplot2::geom_line(ggplot2::aes(date, value), colour = "skyblue",
+                         size = 1.1) +
       ggplot2::geom_text(ggplot2::aes(date, base_label,
                              label = signif(base_label, digits = 2)), vjust = 1,
                          hjust = 0, nudge_y = -.15) +
       ggplot2::theme_classic() +
-      ggplot2::theme(axis.title.x=ggplot2::element_blank(),
-                     axis.title.y=ggplot2::element_blank(),
-                     axis.ticks.x=ggplot2::element_blank(),
-                     axis.ticks.y=ggplot2::element_blank(),
+      ggplot2::theme(axis.title.x = ggplot2::element_blank(),
+                     axis.title.y = ggplot2::element_blank(),
+                     axis.ticks.x = ggplot2::element_blank(),
+                     axis.ticks.y = ggplot2::element_blank(),
                      plot.title = ggplot2::element_text(hjust = 0.5))
 
     if (rephase) {
@@ -96,12 +98,14 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     }
     else if (rephase == FALSE) {
       p <- p + ggplot2::geom_line(ggplot2::aes(date, base))
-      if (trend) p <- p + ggplot2::geom_line(colour = 'blue', ggplot2::aes(date, trend),
-                                    size = 1.1)
+      if (trend) p <- p + ggplot2::geom_line(colour = "blue",
+                                             ggplot2::aes(date, trend),
+                                             size = 1.1)
     }
 
-    if (shift) p <- p + ggplot2::geom_point(ggplot2::aes(date, shift), shape = 16,
-                                            size = 2, colour = 'black',
+    if (shift) p <- p + ggplot2::geom_point(ggplot2::aes(date, shift),
+                                            shape = 16,
+                                            size = 2, colour = "black",
                                             stroke = 2)
     return(p)
   }

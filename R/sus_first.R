@@ -31,7 +31,7 @@ sus_first <- function(base, val, trigger = 9) {
 
   ticker <- ticker(base, val)
 
-  while(is.null(ticker()))
+  while (is.null(ticker()))
     NULL
 
   if (is.numeric(ticker()))

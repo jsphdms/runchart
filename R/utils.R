@@ -14,7 +14,8 @@
 #'@keywords internal
 elems8 <- function(x, n = 8L) {
   if (!is.numeric(c(x, n)))
-    stop("Both arguments must be of type numeric. Is there an 'NA' where there should be an NA?"
+    stop(paste("Both arguments must be of type numeric.",
+               "Is there an 'NA' where there should be an NA?")
     )
 
   if (n > length(x)) {
@@ -25,7 +26,8 @@ elems8 <- function(x, n = 8L) {
 
   if (non_NA_count < n) {
     stop(
-      paste("Input vector x only has", non_NA_count, "non-NA elements. It needs at least", n))
+      paste("Input vector x only has", non_NA_count,
+            "non-NA elements. It needs at least", n))
     }
 
   x[which(!is.na(x))[1:n]]
@@ -100,6 +102,6 @@ df <- function(base, base_ext, base_label = rep(NA_character_, length(base))) {
 #'@return A logical vector.
 #'@examples
 #'runchart:::`%notin%`(1:3, 3:5)
-`%notin%` <- function(x,y) {
+`%notin%` <- function(x, y) {
   !(x %in% y)
 }
