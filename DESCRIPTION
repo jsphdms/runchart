@@ -16,5 +16,6 @@ RoxygenNote: 5.0.1
 Imports: ggplot2, stats
 Suggests: testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    lintr
 VignetteBuilder: knitr
