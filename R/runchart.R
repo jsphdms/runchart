@@ -22,7 +22,7 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     is.data.frame(df),
     setequal(names(df), c("date", "value")),
     is.numeric(df[["value"]]),
-    inherits(df[["date"]], 'Date'),
+    inherits(df[["date"]], 'Date') || inherits(df[["date"]], 'POSIXct'),
     is.logical(c(trend, shift, rephase)),
     length(shift) == 1,
     length(trend) == 1,
@@ -31,7 +31,9 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE, output = '
     nrow(df) > 0
   )
 
+  df[["date"]] <- as.Date(df[["date"]])
   df <- df[order(df[["date"]]),]
+
   value <- df[["value"]]
   date  <- df[["date"]]
 
