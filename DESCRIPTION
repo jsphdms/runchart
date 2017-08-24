@@ -2,11 +2,11 @@ Package: runchart
 Type: Package
 Title: Run Charts with Automatic Rebasing
 Version: 0.2.0
-Author: Joseph Adams [aut, cre]
+Authors@R: person("Joseph", "Adams", role = c("aut", "cre"), email = "joseph@josephadams.net")
 Maintainer: Joseph Adams <joseph@josephadams.net>
 Description: A number of R packages exist to automate statistical process 
     control charts. For example: qicharts, qcc, ggQC. This package is different 
-    because it focusses solely on run charts and provides the ability to 
+    because it focuses solely on run charts and provides the ability to 
     automatically rephase baselines. The package exports a single easy to use 
     function: runchart().
 URL: https://github.com/jsphdms/runchart
