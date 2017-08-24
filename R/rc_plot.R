@@ -22,7 +22,8 @@ rc_plot <- function(df) {
 
   base_label <- val <- shift <- NULL
 
-  rc <- cbind(df[, names(df) != "value", drop = F], rc_fields(df[["value"]]))
+  rc <- cbind(df[, names(df) != "value", drop = FALSE],
+              rc_fields(df[["value"]]))
 
   base <- split(rc[["base"]], "base")
   base_ext <- split(rc[["base_ext"]], "base_ext")

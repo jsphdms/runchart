@@ -50,7 +50,7 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE,
     shift_vec <- multi_shift(rc[["value"]], rc[["base"]], rc[["base_ext"]])
   }
   else if (rephase == FALSE) {
-    base  <- stats::median(value, na.rm = T)
+    base  <- stats::median(value, na.rm = TRUE)
 
     shift_vec     <- trend_vec <- base_label <- value * NA_real_
     shift_index   <- basic_shift(base = base, val = value)
