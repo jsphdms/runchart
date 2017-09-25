@@ -48,12 +48,12 @@ Access the fields behind these plots by setting the output parameter to `df`:
 ``` r
 head(runchart(df, output = 'df'))
 #>         date base value trend shift
-#> 1 2017-08-24    3     4    NA    NA
-#> 2 2017-08-25    3     3    NA    NA
-#> 3 2017-08-26    3     3    NA    NA
-#> 4 2017-08-27    3     2    NA    NA
-#> 5 2017-08-28    3     2    NA    NA
-#> 6 2017-08-29    3     3    NA    NA
+#> 1 2017-09-25    3     4    NA    NA
+#> 2 2017-09-26    3     3    NA    NA
+#> 3 2017-09-27    3     3    NA    NA
+#> 4 2017-09-28    3     2    NA    NA
+#> 5 2017-09-29    3     2    NA    NA
+#> 6 2017-09-30    3     3    NA    NA
 ```
 
 Installation
