@@ -5,3 +5,5 @@
 cran-comments.md
 ^C:/Users/Joseph/Dropbox/Rpackages/runchart-02/docs$
 ^_pkgdown/.yml$
+^.*\.Rproj$
+^\.Rproj\.user$
