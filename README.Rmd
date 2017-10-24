@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 ## runchart
 
-Run charts are one of the fundamental tools of quality improvement. runchart is designed to make it quick and easy to create run charts. Learn more in `vignette("quick-start")` or `?runchart`.
+Run charts are one of the fundamental tools of quality improvement. The runchart package is designed to make it quick and easy to create run charts. Learn more in `vignette("quick-start")` or `?runchart`.
 
 A number of R packages exist to automate statistical process control charts. For example:
 
@@ -33,7 +33,7 @@ devtools::install_github("jsphdms/runchart")
 ```
 
 ## Usage
-Format your data into a dataframe with two columns: date and value. Then feed it into the `runchart()` function. By default shifts and trends are displayed (triggering at 6 and 5 consecutive points respectively) and the baseline is not rephased. These defaults can be changed to suit your methodology.
+Format your data into a dataframe with two columns: date and value. Then feed it into the `runchart()` function. By default shifts and trends are displayed (triggering at 6 and 5 consecutive points respectively) and the baseline is not rephased. These defaults can be changed to suit your methodology (see `vignette("quick-start")` for more details.
 
 ```{r, warning = FALSE, fig.width = 7, fig.align = 'center'}
 library(runchart)

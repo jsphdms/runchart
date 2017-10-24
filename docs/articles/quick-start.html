@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>runchart Quickstart Guide • runchart</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -75,7 +75,7 @@
       <h1>runchart Quickstart Guide</h1>
                         <h4 class="author">Joseph Adams</h4>
             
-            <h4 class="date">2017-09-25</h4>
+            <h4 class="date">2017-10-24</h4>
           </div>
 
     
@@ -85,7 +85,7 @@
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <blockquote>
-<p>Because they are simple to make and relatively straightforward to interpret, run charts are one of the most useful tools in quality improvement. - <a href="http://www.qihub.scot.nhs.uk/knowledge-centre/quality-improvement-tools/run-chart.aspx">NHS Scotland Quality Improvement Hub</a>.</p>
+<p>A run chart is a simple analytical tool that helps us understand changes in data over time. - <a href="http://www.healthcareimprovementscotland.org/previous_resources/implementation_support/guide_to_using_run_charts.aspx">NHS Healthcare Improvement Scotland</a>.</p>
 </blockquote>
 <p>Run charts<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> are non-trivial to automate. A number of solutions exist in the healthcare improvement community in Scotland. However the author is only aware of small-scale solutions such as scripts and Excel macros.</p>
 <p>These kinds of approaches have the following limitations:</p>
@@ -100,8 +100,9 @@
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting Started</h2>
-<p>To download the package first ensure you are not behind a firewall or using a VPN<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. Install the package using <code>install_github()</code><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>:</p>
-<pre><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github('josephjosephadams/runchart')</a></code></pre>
+<p>Install the package using like this:</p>
+<pre><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github"># install.packages("devtools")
+devtools::install_github('jsphdms/runchart')</a></code></pre>
 <!-- The `runchart` package exports one simple function: `runchart()`. The only parameter is a numeric vector of non-zero length. It returns a data frame with 4 columns: `base`, `base_ext`, `shift`, and `val`. -->
 <p>For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Please note - this package is in active construction. Once the codebase is </span>
@@ -126,8 +127,6 @@
 <hr>
 <ol>
 <li id="fn1"><p>As defined by the NHS Scotland Quality Improvement Hub<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>These can block installation from GitHub<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>You may need to install the <code>devtools</code> package first.<a href="#fnref3">↩</a></p></li>
 </ol>
 </div>
 </div>

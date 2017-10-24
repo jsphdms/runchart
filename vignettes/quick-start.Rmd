@@ -11,7 +11,7 @@ vignette: >
 
 ## Introduction
 
->Because they are simple to make and relatively straightforward to interpret, run charts are one of the most useful tools in quality improvement. - [NHS Scotland Quality Improvement Hub](http://www.qihub.scot.nhs.uk/knowledge-centre/quality-improvement-tools/run-chart.aspx).
+>A run chart is a simple analytical tool that helps us understand changes in data over time. - [NHS Healthcare Improvement Scotland](http://www.healthcareimprovementscotland.org/previous_resources/implementation_support/guide_to_using_run_charts.aspx).
 
 Run charts^[As defined by the NHS Scotland Quality Improvement Hub] are non-trivial to automate. A number of solutions exist in the healthcare improvement community in Scotland. However the author is only aware of small-scale solutions such as scripts and Excel macros.
 
@@ -25,10 +25,11 @@ These kinds of approaches have the following limitations:
 The `runchart` package aims to overcome these limitations by exporting a single, well tested, function of the same name: `runchart()`.
 
 ## Getting Started
-To download the package first ensure you are not behind a firewall or using a VPN^[These can block installation from GitHub]. Install the package using `install_github()`^[You may need to install the `devtools` package first.]:
+Install the package using like this:
 
 ```
-devtools::install_github('josephjosephadams/runchart')
+# install.packages("devtools")
+devtools::install_github('jsphdms/runchart')
 ```
 
 <!-- The `runchart` package exports one simple function: `runchart()`. The only parameter is a numeric vector of non-zero length. It returns a data frame with 4 columns: `base`, `base_ext`, `shift`, and `val`. -->
