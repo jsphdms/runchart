@@ -26,4 +26,3 @@ runchart:::base_gaps(c(rep(NA,5), rep(3,8), rep(NA,25)))
 \code{\link{ticker}} \code{\link{multi_shift}}
 }
 \keyword{internal}
-

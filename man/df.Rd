@@ -22,4 +22,3 @@ Create a \code{data.frame} from the vectors \code{base} and \code{base_ext}.
 \examples{
 runchart:::df(c(rep(4.5, 8), NA), rep(4.5, 9))
 }
-

@@ -36,4 +36,3 @@ vname = "example"
 \code{\link{sus}} \code{\link{multi_shift}}
 }
 \keyword{internal}
-

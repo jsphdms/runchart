@@ -33,4 +33,3 @@ base = c(rep(0,8), rep(NA,8)), base_ext = rep(0, 16))
 \code{\link{basic_shift}}
 }
 \keyword{internal}
-

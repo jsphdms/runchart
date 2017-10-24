@@ -30,4 +30,3 @@ runchart:::basic_shift(base = 2, val = 1:7)
 \code{\link{multi_shift}}
 }
 \keyword{internal}
-

@@ -23,4 +23,3 @@ runchart:::rc_fields(rep(1:20))
 \code{\link{sus}} \code{\link{multi_shift}}
 }
 \keyword{internal}
-

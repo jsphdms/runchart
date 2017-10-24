@@ -28,4 +28,3 @@ data.frame(
 \code{\link{rc_fields}} \code{\link{split}}
 }
 \keyword{internal}
-

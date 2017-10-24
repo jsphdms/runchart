@@ -27,4 +27,3 @@ median of \code{new_vals}
 runchart:::rebase(1:9, start = 4, new_vals = 1)
 runchart:::rebase(1:9, start = 4, new_vals = c(1,2,3))
 }
-

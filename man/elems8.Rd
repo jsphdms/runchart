@@ -27,4 +27,3 @@ runchart:::elems8(1:9, 5)
 \code{\link{index1}}, \code{\link{index8}}
 }
 \keyword{internal}
-

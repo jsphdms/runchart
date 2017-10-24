@@ -20,4 +20,3 @@ Convenience infix function.
 \examples{
 runchart:::`\%notin\%`(1:3, 3:5)
 }
-

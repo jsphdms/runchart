@@ -1,7 +1,7 @@
-^.*\.Rproj$
-^\.Rproj\.user$
-^README\.Rmd$
-^README-.*\.png$
+^.*/.Rproj$
+^/.Rproj/.user$
+^README/.Rmd$
+^README-.*/.png$
 cran-comments.md
-^C:\Users\Joseph\Dropbox\Rpackages\runchart-02\docs$
-^_pkgdown\.yml$
+^C:/Users/Joseph/Dropbox/Rpackages/runchart-02/docs$
+^_pkgdown/.yml$

@@ -35,4 +35,3 @@ tick()
 \code{\link{sus}}
 }
 \keyword{internal}
-

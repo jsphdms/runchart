@@ -23,4 +23,3 @@ runchart:::index8(c(NA,1:9))
 \seealso{
 \code{\link{elems8}}, \code{\link{index1}}
 }
-

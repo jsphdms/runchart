@@ -27,4 +27,3 @@ runchart:::basic_trend(val = 1:7)
 \code{\link{basic_shift}}
 }
 \keyword{internal}
-

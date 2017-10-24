@@ -39,4 +39,3 @@ runchart:::sus(rep(1:20), trigger = 9)
 \code{\link{ticker}}
 }
 \keyword{internal}
-

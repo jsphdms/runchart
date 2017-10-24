@@ -28,4 +28,3 @@ runchart:::sus_first(base = 0, val = 1:20)
 \code{\link{ticker}} \code{\link{sus}}
 }
 \keyword{internal}
-
