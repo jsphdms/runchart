@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot a run chart. — rc_plot â€¢ runchart</title>
+<title>runchart — runchart-package â€¢ runchart</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -95,53 +95,40 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot a run chart.</h1>
+    <h1>runchart</h1>
     </div>
 
     
-    <p>Plot a run chart.</p>
+    <p>This is a package for creating run charts.</p>
     
 
-    <pre class="usage"><span class='fu'>rc_plot</span>(<span class='no'>df</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>df</th>
-      <td><p>a data.frame for <code>rc_plot()</code> to plot. <code>df</code> must consist of
-exactly two columns: a column of type Date called <code>date</code> and a column of
-numeric type called <code>value</code>.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+        
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A plot.</p>
+    <p>The runchart package allows users to create run charts.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='rc_fields.html'>rc_fields</a></code> <code><a href='split.html'>split</a></code></p>
+    <p>Useful links:</p><ul>
+<li><p><a href='https://github.com/jsphdms/runchart'>https://github.com/jsphdms/runchart</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/jsphdms/runchart/issues'>https://github.com/jsphdms/runchart/issues</a></p></li>
+</ul>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>30</span>
-<span class='kw pkg'>runchart</span><span class='kw ns'>:::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/runchart/topics/rc_plot'>rc_plot</a></span>(
-<span class='fu'>data.frame</span>(
- <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>seq.Date</span>(<span class='fu'>Sys.Date</span>(), <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"week"</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>n</span>),
- <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'>cumsum</span>(<span class='fu'>rnorm</span>(<span class='no'>n</span>))))</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 30 rows containing missing values (geom_point).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 22 rows containing missing values (geom_path).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 22 rows containing missing values (geom_path).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 17 rows containing missing values (geom_path).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 13 rows containing missing values (geom_path).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 28 rows containing missing values (geom_text).</span></div><div class='img'><img src='rc_plot-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
+
+    <h2>Author</h2>
+    
+<strong>Maintainer</strong>: Joseph Adams <a href='mailto:joseph@josephadams.net'>joseph@josephadams.net</a>
+
 
   </div>
 </div>

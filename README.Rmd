@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 ## runchart
 
-Run charts are one of the fundamental tools of quality improvement. The runchart package is designed to make it quick and easy to create run charts. Learn more in `vignette("quick-start")` or `?runchart`.
+Run charts are one of the fundamental tools of quality improvement. The runchart package is designed to make it quick and easy to create run charts. Read the documentation and quick start guide at https://jsphdms.github.io/runchart/. Or learn more in `vignette("quick-start")` or `?runchart`.
 
 A number of R packages exist to automate statistical process control charts. For example:
 
