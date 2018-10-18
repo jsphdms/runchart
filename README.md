@@ -5,6 +5,8 @@ runchart
 
 [![Travis-CI Build Status](https://travis-ci.org/jsphdms/runchart.svg?branch=master)](https://travis-ci.org/jsphdms/runchart)
 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jsphdms/runchart?branch=master&svg=true)](https://ci.appveyor.com/project/jsphdms/runchart)
+
 [![Coverage status](https://codecov.io/gh/jsphdms/runchart/branch/master/graph/badge.svg)](https://codecov.io/github/jsphdms/runchart?branch=master)
 
 :construction: :construction: :construction: **Package under construction - watch this space for updates** :construction: :construction: :construction:
