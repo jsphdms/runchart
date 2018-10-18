@@ -3,6 +3,8 @@
 runchart
 --------
 
+[![Travis-CI Build Status](https://travis-ci.org/jsphdms/runchart.svg?branch=master)](https://travis-ci.org/jsphdms/runchart)
+
 :construction: :construction: :construction: **Package under construction - watch this space for updates** :construction: :construction: :construction:
 
 > A run chart is a simple analytical tool that helps us understand changes in data over time. - [NHS Healthcare Improvement Scotland](http://www.healthcareimprovementscotland.org/previous_resources/implementation_support/guide_to_using_run_charts.aspx).
