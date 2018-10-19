@@ -1,10 +1,3 @@
-#' runchart
-#'
-#' This is a package for creating run charts.
-#'
-#' The runchart package allows users to create run charts.
-"_PACKAGE"
-
 #'Create a run chart fields for dataframe \code{df}.
 #'
 #'@param df a data.frame which must consist of exactly two columns: a column of
