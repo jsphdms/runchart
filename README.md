@@ -3,13 +3,7 @@
 runchart
 --------
 
-[![Travis-CI Build Status](https://travis-ci.org/jsphdms/runchart.svg?branch=master)](https://travis-ci.org/jsphdms/runchart)
-
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jsphdms/runchart?branch=master&svg=true)](https://ci.appveyor.com/project/jsphdms/runchart)
-
-[![Coverage status](https://codecov.io/gh/jsphdms/runchart/branch/master/graph/badge.svg)](https://codecov.io/github/jsphdms/runchart?branch=master)
-
-:construction: :construction: :construction: **Package under construction - watch this space for updates** :construction: :construction: :construction:
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Travis-CI Build Status](https://travis-ci.org/jsphdms/runchart.svg?branch=master)](https://travis-ci.org/jsphdms/runchart) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jsphdms/runchart?branch=master&svg=true)](https://ci.appveyor.com/project/jsphdms/runchart) [![Coverage status](https://codecov.io/gh/jsphdms/runchart/branch/master/graph/badge.svg)](https://codecov.io/github/jsphdms/runchart?branch=master)
 
 > A run chart is a simple analytical tool that helps us understand changes in data over time. - [NHS Healthcare Improvement Scotland](http://www.healthcareimprovementscotland.org/previous_resources/implementation_support/guide_to_using_run_charts.aspx).
 
@@ -51,12 +45,12 @@ Access the fields behind these plots by setting the output parameter to `df`:
 ``` r
 head(runchart(df, output = 'df'))
 #>         date base value trend shift
-#> 1 2018-10-18    3     4    NA    NA
-#> 2 2018-10-19    3     3    NA    NA
-#> 3 2018-10-20    3     3    NA    NA
-#> 4 2018-10-21    3     2    NA    NA
-#> 5 2018-10-22    3     2    NA    NA
-#> 6 2018-10-23    3     3    NA    NA
+#> 1 2018-10-19    3     4    NA    NA
+#> 2 2018-10-20    3     3    NA    NA
+#> 3 2018-10-21    3     3    NA    NA
+#> 4 2018-10-22    3     2    NA    NA
+#> 5 2018-10-23    3     2    NA    NA
+#> 6 2018-10-24    3     3    NA    NA
 ```
 
 Installation
