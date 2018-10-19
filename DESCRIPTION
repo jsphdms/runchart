@@ -19,7 +19,9 @@ Imports: ggplot2, stats
 Suggests: 
     testthat,
     knitr,
+    roxygen2,
     rmarkdown,
     lintr,
     covr
 VignetteBuilder: knitr
+Language: en-GB

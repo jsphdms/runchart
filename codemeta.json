@@ -1,5 +1,8 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "runchart",
   "description": "A number of R packages exist to automate statistical process \n    control charts. For example: qicharts, qcc, ggQC. This package is different \n    because it focuses solely on run charts and provides the ability to \n    automatically rephase baselines. The package exports a single easy to use \n    function: runchart().",
@@ -55,6 +58,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "roxygen2",
+      "name": "roxygen2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=roxygen2"
     },
     {
       "@type": "SoftwareApplication",
@@ -114,7 +129,11 @@
   ],
   "releaseNotes": "https://github.com/jsphdms/runchart/blob/master/NEWS.md",
   "readme": "https://github.com/jsphdms/runchart/blob/master/README.md",
-  "fileSize": "129.28KB",
-  "contIntegration": ["https://travis-ci.org/jsphdms/runchart", "https://ci.appveyor.com/project/jsphdms/runchart", "https://codecov.io/github/jsphdms/runchart?branch=master"],
+  "fileSize": "199.179KB",
+  "contIntegration": [
+    "https://travis-ci.org/jsphdms/runchart",
+    "https://ci.appveyor.com/project/jsphdms/runchart",
+    "https://codecov.io/github/jsphdms/runchart?branch=master"
+  ],
   "developmentStatus": "https://www.repostatus.org/#wip"
 }
