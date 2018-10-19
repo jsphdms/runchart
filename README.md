@@ -58,4 +58,4 @@ Installation
 
 This package is available for download from GitHub:
 
-    devtools::install_github('josephjosephadams/runchart')
+    devtools::install_github('jsphdms/runchart')
