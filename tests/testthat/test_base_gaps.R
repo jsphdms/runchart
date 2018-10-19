@@ -1,4 +1,3 @@
-library(firstpackage)
 context("base_gaps()")
 
 # Basic functionality ---------------------------------------------------------

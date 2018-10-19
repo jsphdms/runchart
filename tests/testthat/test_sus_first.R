@@ -1,4 +1,3 @@
-library(firstpackage)
 context("sus_first()")
 
 test_that("sus_first() meets basic requirements", {

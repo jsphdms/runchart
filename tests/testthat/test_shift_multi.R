@@ -1,4 +1,3 @@
-library(firstpackage)
 context("multi_shift()")
 
 # Basic functionality ---------------------------------------------------------

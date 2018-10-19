@@ -1,4 +1,3 @@
-library(firstpackage)
 context("sus()")
 
 test_that("sus() meets basic requirements", {

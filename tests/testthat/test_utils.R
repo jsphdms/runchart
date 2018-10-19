@@ -1,4 +1,3 @@
-library(firstpackage)
 context("utils")
 
 test_that("index1() works as expected", {

@@ -1,4 +1,3 @@
-library(firstpackage)
 context("basic_trend()")
 
 # Basic functionality ---------------------------------------------------------

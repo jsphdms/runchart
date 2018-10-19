@@ -1,4 +1,3 @@
-library(firstpackage)
 context("split()")
 
 # Basic functionality ---------------------------------------------------------

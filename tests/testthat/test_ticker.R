@@ -1,4 +1,3 @@
-library(firstpackage)
 context("ticker()")
 
 # Basic functionality ---------------------------------------------------------

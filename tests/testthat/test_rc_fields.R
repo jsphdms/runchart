@@ -1,4 +1,3 @@
-library(firstpackage)
 context("rc_fields()")
 
 # Basic functionality ---------------------------------------------------------
