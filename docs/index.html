@@ -46,19 +46,10 @@
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="articles/runchart.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/quick-start.html">runchart Quickstart Guide</a>
-    </li>
-  </ul>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -100,7 +91,7 @@
 <li><a href="https://cran.r-project.org/web/packages/qcc/index.html">qcc</a></li>
 <li><a href="https://cran.r-project.org/web/packages/ggQC/index.html">ggQC</a></li>
 </ul>
-<p>The <code>runchart</code> package is different from the above because it focusses solely on run charts and provides the ability to automatically rephase baselines. The package exports a single easy to use function <code><a href="http://www.rdocumentation.org/packages/runchart/topics/runchart-package">runchart()</a></code>.</p>
+<p>The <code>runchart</code> package is different from the above because it focusses solely on run charts and provides the ability to automatically rephase baselines. The package exports a single easy to use function <code><a href="reference/runchart.html">runchart()</a></code>.</p>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
@@ -112,26 +103,26 @@
 df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">date  =</span> <span class="kw">seq.Date</span>(<span class="kw">Sys.Date</span>(), <span class="dt">by =</span> <span class="st">"day"</span>, <span class="dt">length.out =</span> <span class="dv">30</span>),
                  <span class="dt">value =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">6</span>))
 
-<span class="kw"><a href="http://www.rdocumentation.org/packages/runchart/topics/runchart-package">runchart</a></span>(df)</code></pre></div>
+<span class="kw"><a href="reference/runchart.html">runchart</a></span>(df)</code></pre></div>
 <p><img src="README-unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>Both shifts and trends can be independantly suppressed. The baseline can be rephased (triggering at 9 consecutive points):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/runchart/topics/runchart-package">runchart</a></span>(df, <span class="dt">shift =</span> <span class="ot">FALSE</span>, <span class="dt">trend =</span> <span class="ot">FALSE</span>, <span class="dt">rephase =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/runchart.html">runchart</a></span>(df, <span class="dt">shift =</span> <span class="ot">FALSE</span>, <span class="dt">trend =</span> <span class="ot">FALSE</span>, <span class="dt">rephase =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p><img src="README-unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>Access the fields behind these plots by setting the output parameter to <code>df</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/runchart/topics/runchart-package">runchart</a></span>(df, <span class="dt">output =</span> <span class="st">'df'</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw"><a href="reference/runchart.html">runchart</a></span>(df, <span class="dt">output =</span> <span class="st">'df'</span>))
 <span class="co">#&gt;         date base value trend shift</span>
-<span class="co">#&gt; 1 2018-10-19    3     4    NA    NA</span>
-<span class="co">#&gt; 2 2018-10-20    3     3    NA    NA</span>
-<span class="co">#&gt; 3 2018-10-21    3     3    NA    NA</span>
-<span class="co">#&gt; 4 2018-10-22    3     2    NA    NA</span>
-<span class="co">#&gt; 5 2018-10-23    3     2    NA    NA</span>
-<span class="co">#&gt; 6 2018-10-24    3     3    NA    NA</span></code></pre></div>
+<span class="co">#&gt; 1 2018-10-28    3     4    NA    NA</span>
+<span class="co">#&gt; 2 2018-10-29    3     3    NA    NA</span>
+<span class="co">#&gt; 3 2018-10-30    3     3    NA    NA</span>
+<span class="co">#&gt; 4 2018-10-31    3     2    NA    NA</span>
+<span class="co">#&gt; 5 2018-11-01    3     2    NA    NA</span>
+<span class="co">#&gt; 6 2018-11-02    3     3    NA    NA</span></code></pre></div>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>This package is available for download from GitHub:</p>
-<pre><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github('josephjosephadams/runchart')</a></code></pre>
+<pre><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github('jsphdms/runchart')</a></code></pre>
 </div>
   </div>
 
