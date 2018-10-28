@@ -78,14 +78,15 @@ runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE,
       ggplot2::geom_line(ggplot2::aes(date, value), colour = "skyblue",
                          size = 1.1) +
       ggplot2::geom_text(ggplot2::aes(date, base_label,
-                             label = signif(base_label, digits = 2)), vjust = 1,
-                         hjust = 0, nudge_y = -.15) +
+                             label = signif(base_label, digits = 2)),
+                         hjust = "left", vjust = "top",
+                         nudge_y = (max(value) - min(value)) / -50) +
       ggplot2::theme_classic() +
       ggplot2::theme(axis.title.x = ggplot2::element_blank(),
                      axis.title.y = ggplot2::element_blank(),
                      axis.ticks.x = ggplot2::element_blank(),
                      axis.ticks.y = ggplot2::element_blank(),
-                     plot.title = ggplot2::element_text(hjust = 0.5))
+                     plot.title = ggplot2::element_text(hjust = "center"))
 
     if (rephase) {
       for (i in names(base)) {
