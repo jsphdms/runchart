@@ -14,7 +14,7 @@ df_POSIXct <- data.frame(date  = datetime,
 
 test_that("runchart() handles basic cases with output = 'df'", {
   expect_equal(
-    runchart(df_Date, output = "df"),
+    runchart(df_Date, trend = TRUE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_Date[["value"]],
@@ -23,7 +23,7 @@ test_that("runchart() handles basic cases with output = 'df'", {
   ))
 
   expect_equal(
-    runchart(df_Date, trend = FALSE, output = "df"),
+    runchart(df_Date, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_Date[["value"]],
@@ -31,7 +31,7 @@ test_that("runchart() handles basic cases with output = 'df'", {
   ))
 
   expect_equal(
-    runchart(df_Date, shift = FALSE, output = "df"),
+    runchart(df_Date, trend = TRUE, shift = FALSE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_Date[["value"]],
@@ -39,7 +39,7 @@ test_that("runchart() handles basic cases with output = 'df'", {
   ))
 
   expect_equal(
-    runchart(df_Date, shift = FALSE, trend = FALSE, output = "df"),
+    runchart(df_Date, shift = FALSE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_Date[["value"]]
@@ -66,7 +66,7 @@ test_that("runchart() handles basic cases with output = 'df' rephase = TRUE", {
 
 test_that("runchart() handles data of both types POSIXct and Date", {
   expect_equal(
-    runchart(df_POSIXct, output = "df"),
+    runchart(df_POSIXct, trend = TRUE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_POSIXct[["value"]],
@@ -75,7 +75,7 @@ test_that("runchart() handles data of both types POSIXct and Date", {
     ))
 
   expect_equal(
-    runchart(df_POSIXct, trend = FALSE, output = "df"),
+    runchart(df_POSIXct, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_POSIXct[["value"]],
@@ -83,7 +83,7 @@ test_that("runchart() handles data of both types POSIXct and Date", {
     ))
 
   expect_equal(
-    runchart(df_POSIXct, shift = FALSE, output = "df"),
+    runchart(df_POSIXct, shift = FALSE, trend = TRUE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_POSIXct[["value"]],
@@ -91,7 +91,7 @@ test_that("runchart() handles data of both types POSIXct and Date", {
     ))
 
   expect_equal(
-    runchart(df_POSIXct, shift = FALSE, trend = FALSE, output = "df"),
+    runchart(df_POSIXct, shift = FALSE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
                value = df_POSIXct[["value"]]

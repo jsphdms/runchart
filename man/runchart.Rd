@@ -4,7 +4,7 @@
 \alias{runchart}
 \title{Create a run chart fields for dataframe \code{df}.}
 \usage{
-runchart(df, shift = TRUE, trend = TRUE, rephase = FALSE,
+runchart(df, shift = TRUE, trend = FALSE, rephase = FALSE,
   output = "plot")
 }
 \arguments{

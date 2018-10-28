@@ -17,8 +17,15 @@
 #'runchart(df)
 
 #'@export
-runchart <- function(df, shift = TRUE, trend = TRUE, rephase = FALSE,
+runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
                      output = "plot") {
+
+  if (trend == TRUE && rephase == TRUE)
+    stop(paste0("Oops - you asked for a run chart that rephases AND includes",
+                " trends. This ability isn't available yet.",
+                " Check here for updates:",
+                " https://github.com/jsphdms/runchart/issues/5"))
+
   stopifnot(
     is.data.frame(df),
     setequal(names(df), c("date", "value")),
