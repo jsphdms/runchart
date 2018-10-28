@@ -34,6 +34,8 @@ elems8 <- function(x, n = 8L) {
   x[which(!is.na(x))[1:n]]
 }
 
+###############################################################################
+
 #'Index of the first non-NA element of x.
 #'
 #'@inheritParams elems8
@@ -46,6 +48,8 @@ elems8 <- function(x, n = 8L) {
 index1 <- function(x) {
   min(which(!is.na(x)))
 }
+
+###############################################################################
 
 #'Index of the nth non-NA element of x where n defaults to 8.
 #'
@@ -60,6 +64,8 @@ index1 <- function(x) {
 index8 <- function(x,  n = 8L) {
   max(which(!is.na(x))[1:n])
 }
+
+###############################################################################
 
 #'Rebase \code{base} starting from \code{start} until \code{start} using the
 #'median of \code{new_vals}
@@ -88,6 +94,8 @@ rebase <- function(base, start = 1, end = length(base), new_vals) {
   base
 }
 
+###############################################################################
+
 #'Create a \code{data.frame} from the vectors \code{base} and \code{base_ext}.
 #'
 #'@param base A numeric vector.
@@ -104,6 +112,8 @@ df <- function(base, base_ext, base_label = rep(NA_character_, length(base))) {
              base_label = base_label)
 }
 
+###############################################################################
+
 #'Convenience infix function.
 #'
 #'@param x A numeric vector.
@@ -116,6 +126,8 @@ df <- function(base, base_ext, base_label = rep(NA_character_, length(base))) {
 `%notin%` <- function(x, y) {
   !(x %in% y)
 }
+
+###############################################################################
 
 #'Rephased baselines are joined up when plotted as a single vector. This means
 #'that a line will join the end of a base line to the beginning of another.
@@ -181,4 +193,3 @@ split <- function(v, vname) {
   }
   return(df)
 }
-
