@@ -12,6 +12,7 @@
 #'runchart:::elems8(1:9, 5)
 #'@seealso \code{\link{index1}}, \code{\link{index8}}
 #'@keywords internal
+#'@noRd
 elems8 <- function(x, n = 8L) {
   if (!is.numeric(c(x, n)))
     stop(paste("Both arguments must be of type numeric.",
@@ -39,7 +40,9 @@ elems8 <- function(x, n = 8L) {
 #'@return A numeric vector of length one.
 #'@examples
 #'runchart:::index1(c(NA,1:9))
-#'@seealso \code{\link{elems8}}, \code{\link{index8}}
+#'@seealso \code{\link{index8}}
+#'@keywords internal
+#'@noRd
 index1 <- function(x) {
   min(which(!is.na(x)))
 }
@@ -51,7 +54,9 @@ index1 <- function(x) {
 #'@return A numeric vector of length one.
 #'@examples
 #'runchart:::index8(c(NA,1:9))
-#'@seealso \code{\link{elems8}}, \code{\link{index1}}
+#'@seealso \code{\link{index1}}
+#'@keywords internal
+#'@noRd
 index8 <- function(x,  n = 8L) {
   max(which(!is.na(x))[1:n])
 }
@@ -67,6 +72,8 @@ index8 <- function(x,  n = 8L) {
 #'@examples
 #'runchart:::rebase(1:9, start = 4, new_vals = 1)
 #'runchart:::rebase(1:9, start = 4, new_vals = c(1,2,3))
+#'@keywords internal
+#'@noRd
 rebase <- function(base, start = 1, end = length(base), new_vals) {
   stopifnot(
     is.numeric(base),
@@ -89,6 +96,8 @@ rebase <- function(base, start = 1, end = length(base), new_vals) {
 #'@return A \code{data.frame} with 2 columns: \code{base} and \code{base_ext}.
 #'@examples
 #'runchart:::df(c(rep(4.5, 8), NA), rep(4.5, 9))
+#'@keywords internal
+#'@noRd
 df <- function(base, base_ext, base_label = rep(NA_character_, length(base))) {
   data.frame(base = base,
              base_ext = base_ext,
@@ -102,6 +111,8 @@ df <- function(base, base_ext, base_label = rep(NA_character_, length(base))) {
 #'@return A logical vector.
 #'@examples
 #'runchart:::`%notin%`(1:3, 3:5)
+#'@keywords internal
+#'@noRd
 `%notin%` <- function(x, y) {
   !(x %in% y)
 }
