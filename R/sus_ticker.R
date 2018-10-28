@@ -5,7 +5,7 @@
 #'string \code{No sus shift found}.
 #'
 #'@param base A numeric vector of length one. The current baseline value.
-#'@param val A numeric vector. The vector \code{ticker} iterates over.
+#'@param val A numeric vector. The vector \code{sus_ticker} iterates over.
 #'@param trigger A numeric vector of length one. Specifies how many consecutive
 #'  points are required for a sustained shift.
 #'@return \code{NULL}, until either a sustained shift is found (then it returns
@@ -13,7 +13,7 @@
 #'  (then it returns the string \code{No sus shift found}). The indices of the
 #'  first sustained shift (if one is found). Otherwise, \code{NULL}.
 #'@examples
-#'tick <- runchart:::ticker(base = 2, val = 1:15)
+#'tick <- runchart:::sus_ticker(base = 2, val = 1:15)
 #'tick()
 #'tick()
 #'tick()
@@ -22,7 +22,7 @@
 #'@keywords internal
 #'@noRd
 
-ticker <- function(base, val, trigger = 9) {
+sus_ticker <- function(base, val, trigger = 9) {
   stopifnot(
     is.numeric(base),
     is.numeric(val),

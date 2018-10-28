@@ -10,7 +10,7 @@
 #'  returns \code{NULL} if no sustained shift is found.
 #'@examples
 #'runchart:::sus_first(base = 0, val = 1:20)
-#'@seealso \code{\link{ticker}} \code{\link{sus}}
+#'@seealso \code{\link{sus_ticker}} \code{\link{sus}}
 #'@keywords internal
 #'@noRd
 
@@ -30,13 +30,13 @@ sus_first <- function(base, val, trigger = 9) {
   if (sum(val %notin% c(NA, base)) < trigger)
     return(NULL)
 
-  ticker <- ticker(base, val)
+  sus_ticker <- sus_ticker(base, val)
 
-  while (is.null(ticker()))
+  while (is.null(sus_ticker()))
     NULL
 
-  if (is.numeric(ticker()))
-    return(ticker())
+  if (is.numeric(sus_ticker()))
+    return(sus_ticker())
   else
     return(NULL)
 }
