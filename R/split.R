@@ -15,6 +15,7 @@
 #')
 #'@seealso \code{\link{sus}} \code{\link{multi_shift}}
 #'@keywords internal
+#'@noRd
 
 split <- function(v, vname) {
   stopifnot(

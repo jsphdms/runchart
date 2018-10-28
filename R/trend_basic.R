@@ -12,6 +12,7 @@
 #'runchart:::basic_trend(val = 1:7)
 #'@seealso \code{\link{basic_shift}}
 #'@keywords internal
+#'@noRd
 
 basic_trend <- function(val, trigger = 5) {
   stopifnot(

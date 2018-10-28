@@ -23,6 +23,7 @@
 #'runchart:::sus(rep(1:20), trigger = 9)
 #'@seealso \code{\link{ticker}}
 #'@keywords internal
+#'@noRd
 
 sus <- function(val, trigger = 9) {
   stopifnot(

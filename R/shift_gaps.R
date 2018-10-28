@@ -12,6 +12,7 @@
 #'runchart:::base_gaps(c(rep(NA,5), rep(3,8), rep(NA,25)))
 #'@seealso \code{\link{ticker}} \code{\link{multi_shift}}
 #'@keywords internal
+#'@noRd
 
 base_gaps <- function(base) {
   stopifnot(

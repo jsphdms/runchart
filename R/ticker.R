@@ -20,6 +20,7 @@
 # etc
 #'@seealso \code{\link{sus}}
 #'@keywords internal
+#'@noRd
 
 ticker <- function(base, val, trigger = 9) {
   stopifnot(

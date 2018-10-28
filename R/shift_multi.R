@@ -16,6 +16,7 @@
 #'base = c(rep(0,8), rep(NA,8)), base_ext = rep(0, 16))
 #'@seealso \code{\link{basic_shift}}
 #'@keywords internal
+#'@noRd
 
 multi_shift <- function(val, base, base_ext, trigger = 6) {
   stopifnot(
