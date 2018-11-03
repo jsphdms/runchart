@@ -18,7 +18,7 @@
 
 #'@export
 runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
-                     output = "plot") {
+                     trigger = 9, output = "plot") {
 
   # if (trend == TRUE && rephase == TRUE)
   #   stop(paste0("Oops - you asked for a run chart that rephases AND includes",
@@ -48,7 +48,7 @@ runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
 # Regardless of the requested output, we always need a dataframe --------------
 
   if (rephase) {
-    rc        <- cbind(df, sus(df[["value"]]))
+    rc        <- cbind(df, sus(df[["value"]], trigger = trigger))
 
     base      <- split(rc[["base"]], "base")
     base_ext  <- split(rc[["base_ext"]], "base_ext")

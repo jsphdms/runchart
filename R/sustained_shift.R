@@ -91,7 +91,7 @@ sus_first <- function(base, val, trigger = 9) {
   if (sum(val %notin% c(NA, base)) < trigger)
     return(NULL)
 
-  sus_ticker <- sus_ticker(base, val)
+  sus_ticker <- sus_ticker(base = base, val = val, trigger = trigger)
 
   while (is.null(sus_ticker()))
     NULL
@@ -144,10 +144,11 @@ sus <- function(val, trigger = 9) {
   if (length(which(!is.na(val))) < trigger - 1)
     return(df(base, base, base_label))
 
-  base      <- rebase(base, start = index1(val), end = index8(val),
-                      new_vals = elems8(val))
+  base      <- rebase(base, start = index1(val),
+                      end = index8(val, n = trigger - 1),
+                      new_vals = elems8(val, n = trigger - 1))
   base_ext  <- rebase(base, start = index1(val), new_vals = base[index1(base)])
-  start     <- index8(val)
+  start     <- index8(val, n = trigger - 1)
   base_label[index1(val)] <- base[index1(val)]
 
   if (length(which(!is.na(val))) < 2 * trigger - 1)
