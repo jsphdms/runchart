@@ -44,13 +44,13 @@ Access the fields behind these plots by setting the output parameter to `df`:
 
 ``` r
 head(runchart(df, output = 'df'))
-#>         date base value trend shift
-#> 1 2018-10-19    3     4    NA    NA
-#> 2 2018-10-20    3     3    NA    NA
-#> 3 2018-10-21    3     3    NA    NA
-#> 4 2018-10-22    3     2    NA    NA
-#> 5 2018-10-23    3     2    NA    NA
-#> 6 2018-10-24    3     3    NA    NA
+#>         date base value shift
+#> 1 2018-11-03    3     4    NA
+#> 2 2018-11-04    3     3    NA
+#> 3 2018-11-05    3     3    NA
+#> 4 2018-11-06    3     2    NA
+#> 5 2018-11-07    3     2    NA
+#> 6 2018-11-08    3     3    NA
 ```
 
 Installation
@@ -59,3 +59,8 @@ Installation
 This package is available for download from GitHub:
 
     devtools::install_github('jsphdms/runchart')
+
+Contributing
+------------
+
+This project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

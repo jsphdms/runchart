@@ -54,3 +54,6 @@ This package is available for download from GitHub:
 ```
 devtools::install_github('jsphdms/runchart')
 ```
+
+## Contributing
+This project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
