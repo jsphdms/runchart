@@ -40,4 +40,4 @@ project you agree to abide by its terms.
 
 ### Thanks for contributing!
 
-This contributing guide is adapted from the rOpenSci contributing guide template available at https://github.com/ropensci/dotgithubfiles/blob/master/dotgithub/CONTRIBUTING.md
+This contributing guide is adapted from the [rOpenSci contributing guide template](https://github.com/ropensci/dotgithubfiles/blob/master/dotgithub/CONTRIBUTING.md).
