@@ -36,17 +36,9 @@ devtools::install_github('jsphdms/runchart')
 
 For example:
 
-```{r}
-# Please note - this package is in active construction. Once the codebase is 
-# stable, this Quickstart Vignette will include more detail.
-```
 
 Code for plotting the result might look like this:
 
-```{r, warning = FALSE, fig.width = 7, fig.align = 'center'}
-# Please note - this package is in active construction. Once the codebase is 
-# stable, this Quickstart Vignette will include more detail.
-```
 
 ## Things to Notice
 There are several behaviours to notice in the plot above:

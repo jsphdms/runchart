@@ -17,13 +17,6 @@ test_that("split() handles basic cases", {
   )
 })
 
-# Corner cases ----------------------------------------------------------------
-
-test_that("split() handles corner cases", {
-
-
-})
-
 # NAs -------------------------------------------------------------------------
 
 test_that("split() handles NAs", {

@@ -33,7 +33,9 @@ basic_trend <- function(val, trigger = 5) {
 
   trend  <- c(trend1, trend2)
   updown <- sign(val[trend[2]] - val[trend[1]])
-  trends <- non_useful_obs <- NULL
+  non_useful_obs <- trends <- NULL
+
+  trend_index <- 0
 
   for (index in (trend[2] + 1):length(val)) {
 
@@ -48,8 +50,13 @@ basic_trend <- function(val, trigger = 5) {
     }
     else {
       if (length(trend) >= trigger) {
-        trends <- append(trends, trend)
-        trends <- append(trends, non_useful_obs)
+        trend_index <- trend_index + 1
+
+        trends[[paste0("trend", trend_index)]] <- val * NA_real_
+        trends[[paste0("trend", trend_index)]][trend] <- val[trend]
+        trends[[paste0("trend", trend_index)]][non_useful_obs] <-
+          val[non_useful_obs]
+
       }
       trend <- append(max(trend), index)
       non_useful_obs <- non_useful_obs[non_useful_obs > min(trend)]
@@ -60,9 +67,16 @@ basic_trend <- function(val, trigger = 5) {
   non_useful_obs <- non_useful_obs[non_useful_obs > min(trend)]
 
   if (length(trend) >= trigger) {
-    trends <- append(trends, trend)
-    trends <- append(trends, non_useful_obs)
+    trend_index <- trend_index + 1
+
+    trends[[paste0("trend", trend_index)]] <- val * NA_real_
+    trends[[paste0("trend", trend_index)]][trend] <- val[trend]
+    trends[[paste0("trend", trend_index)]][non_useful_obs] <-
+      val[non_useful_obs]
+
   }
 
-  if (is.null(trends)) return(NULL) else return(sort(unique(trends)))
+  trends <- as.data.frame(trends)
+
+  if (length(trends) == 0) return(NULL) else return(trends)
 }

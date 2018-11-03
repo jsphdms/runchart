@@ -18,7 +18,6 @@ test_that("runchart() handles basic cases with output = 'df'", {
     data.frame(date = date,
                base = rep(0, n),
                value = df_Date[["value"]],
-               trend = rep(NA_real_, n),
                shift = rep(NA_real_, n)
   ))
 
@@ -34,8 +33,7 @@ test_that("runchart() handles basic cases with output = 'df'", {
     runchart(df_Date, trend = TRUE, shift = FALSE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
-               value = df_Date[["value"]],
-               trend = rep(NA_real_, n)
+               value = df_Date[["value"]]
   ))
 
   expect_equal(
@@ -70,7 +68,6 @@ test_that("runchart() handles data of both types POSIXct and Date", {
     data.frame(date = date,
                base = rep(0, n),
                value = df_POSIXct[["value"]],
-               trend = rep(NA_real_, n),
                shift = rep(NA_real_, n)
     ))
 
@@ -86,8 +83,7 @@ test_that("runchart() handles data of both types POSIXct and Date", {
     runchart(df_POSIXct, shift = FALSE, trend = TRUE, output = "df"),
     data.frame(date = date,
                base = rep(0, n),
-               value = df_POSIXct[["value"]],
-               trend = rep(NA_real_, n)
+               value = df_POSIXct[["value"]]
     ))
 
   expect_equal(

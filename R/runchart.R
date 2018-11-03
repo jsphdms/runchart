@@ -20,11 +20,11 @@
 runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
                      output = "plot") {
 
-  if (trend == TRUE && rephase == TRUE)
-    stop(paste0("Oops - you asked for a run chart that rephases AND includes",
-                " trends. This ability isn't available yet.",
-                " Check here for updates:",
-                " https://github.com/jsphdms/runchart/issues/5"))
+  # if (trend == TRUE && rephase == TRUE)
+  #   stop(paste0("Oops - you asked for a run chart that rephases AND includes",
+  #               " trends. This ability isn't available yet.",
+  #               " Check here for updates:",
+  #               " https://github.com/jsphdms/runchart/issues/5"))
 
   stopifnot(
     is.data.frame(df),
@@ -52,6 +52,7 @@ runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
 
     base      <- split(rc[["base"]], "base")
     base_ext  <- split(rc[["base_ext"]], "base_ext")
+
     rc        <- cbind(rc, base, base_ext)
 
     shift_vec <- multi_shift(rc[["value"]], rc[["base"]], rc[["base_ext"]])
@@ -59,20 +60,21 @@ runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
   else if (rephase == FALSE) {
     base  <- stats::median(value, na.rm = TRUE)
 
-    shift_vec     <- trend_vec <- base_label <- value * NA_real_
+    shift_vec     <- base_label <- value * NA_real_
     shift_index   <- basic_shift(base = base, val = value)
-    trend_index   <- basic_trend(val = value)
 
     base_label[1] <- base
     shift_vec[shift_index] <- value[shift_index]
-    trend_vec[trend_index] <- value[trend_index]
     base  <- rep(base, length(value))
 
     rc <- data.frame(date  = date,
                      base  = base,
                      value = value)
+  }
 
-    if (trend) rc[["trend"]] <- trend_vec
+  if (trend) {
+    trends_df <- basic_trend(df[["value"]])
+    if (!is.null(trends_df)) rc <- cbind(rc, trends_df)
   }
 
   if (shift) rc[["shift"]] <- shift_vec
@@ -87,7 +89,8 @@ runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
       ggplot2::geom_text(ggplot2::aes(date, base_label,
                              label = signif(base_label, digits = 2)),
                          hjust = "left", vjust = "top",
-                         nudge_y = (max(value) - min(value)) / -50) +
+                         nudge_y = (max(value, na.rm = TRUE) -
+                                      min(value, na.rm = TRUE)) / -50) +
       ggplot2::theme_classic() +
       ggplot2::theme(axis.title.x = ggplot2::element_blank(),
                      axis.title.y = ggplot2::element_blank(),
@@ -106,9 +109,14 @@ runchart <- function(df, shift = TRUE, trend = FALSE, rephase = FALSE,
     }
     else if (rephase == FALSE) {
       p <- p + ggplot2::geom_line(ggplot2::aes(date, base))
-      if (trend) p <- p + ggplot2::geom_line(colour = "blue",
-                                             ggplot2::aes(date, trend),
-                                             size = 1.1)
+    }
+
+    if (trend) {
+      for (i in names(trends_df)) {
+        p <- p + ggplot2::geom_line(colour = "blue",
+                                    ggplot2::aes_string("date", i),
+                                    size = 1.1)
+      }
     }
 
     if (shift) p <- p + ggplot2::geom_point(ggplot2::aes(date, shift),
