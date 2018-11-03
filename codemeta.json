@@ -9,7 +9,7 @@
   "name": "runchart: Run Charts with Automatic Rebasing",
   "codeRepository": "https://github.com/jsphdms/runchart",
   "issueTracker": "https://github.com/jsphdms/runchart/issues",
-  "license": "https://spdx.org/licenses/GPL-2.0",
+  "license": "https://spdx.org/licenses/MIT",
   "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
@@ -129,7 +129,7 @@
   ],
   "releaseNotes": "https://github.com/jsphdms/runchart/blob/master/NEWS.md",
   "readme": "https://github.com/jsphdms/runchart/blob/master/README.md",
-  "fileSize": "199.179KB",
+  "fileSize": "120.339KB",
   "contIntegration": [
     "https://travis-ci.org/jsphdms/runchart",
     "https://ci.appveyor.com/project/jsphdms/runchart",
